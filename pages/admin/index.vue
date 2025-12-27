@@ -111,7 +111,16 @@ async function fetchCount(key: string) {
         ? '/articles'
         : `/${key}`
     const data: any = await apiGet(url, { params: { limit: 1, offset: 0 } })
-    const total = typeof data?.total === 'number' ? data.total : Array.isArray(data?.items) ? data.items.length : 0
+    const total =
+      typeof data?.total === 'number'
+        ? data.total
+        : typeof data?.count === 'number'
+        ? data.count
+        : typeof data?.metadata?.total === 'number'
+        ? data.metadata.total
+        : Array.isArray(data?.items)
+        ? data.items.length
+        : 0
     counts[key] = total
   } catch {
     counts[key] = 0

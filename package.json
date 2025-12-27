@@ -10,7 +10,6 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "pinia": "^2.1.7",
     "@css-render/vue3-ssr": "^0.15.14",
     "@lottiefiles/dotlottie-wc": "^0.8.1",
     "@nuxt/icon": "^2.0.0",
@@ -21,6 +20,7 @@
     "jalaliday": "^3.1.1",
     "naive-ui": "^2.43.1",
     "nuxt": "^4.1.2",
+    "pinia": "^3.0.4",
     "vdirs": "^0.1.8",
     "vite-tsconfig-paths": "^5.1.4",
     "vooks": "^0.2.12",

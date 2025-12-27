@@ -36,6 +36,7 @@
 
 <script setup lang="ts">
 import { computed, h, ref, watch } from 'vue'
+import { useDebounceFn } from '@vueuse/core'
 import { NButton, NCard, NDataTable, NInput, NSelect, NSwitch } from 'naive-ui'
 import { apiDelete, apiGet } from '@/utils/api'
 
@@ -56,7 +57,7 @@ const brands = ref<any[]>([])
 const categories = ref<any[]>([])
 const statuses = ref<any[]>([])
 
-async function fetchList() {
+const fetchList = useDebounceFn(async () => {
   pending.value = true
   try {
     const data: any = await apiGet('/products', {
@@ -72,10 +73,12 @@ async function fetchList() {
     })
     items.value = Array.isArray(data?.items) ? data.items : []
     total.value = typeof data?.total === 'number' ? data.total : items.value.length
+  } catch {
+    // ignore; table will stay as-is
   } finally {
     pending.value = false
   }
-}
+}, 200)
 
 async function fetchFilters() {
   try {
@@ -97,7 +100,18 @@ const statusOptions = computed(() => statuses.value.map((x: any) => ({ label: x.
 function prev() { offset.value = Math.max(0, offset.value - limit.value) }
 function next() { if (offset.value + limit.value < total.value) offset.value += limit.value }
 
-watch([q, brandID, categoryID, statusID, onlyActive, limit, offset], fetchList, { immediate: true })
+watch([q, brandID, categoryID, statusID, onlyActive, limit, offset], (vals, oldVals) => {
+  if (oldVals) {
+    const [oq, ob, oc, os, oa, ol, oo] = oldVals as any[]
+    const [nq, nb, nc, ns, na, nl, no] = vals as any[]
+    const filtersChanged = nq !== oq || nb !== ob || nc !== oc || ns !== os || na !== oa || nl !== ol
+    if (filtersChanged && offset.value !== 0) {
+      offset.value = 0
+      return
+    }
+  }
+  fetchList()
+}, { immediate: true })
 fetchFilters()
 
 function onEdit(row: any) { navigateTo(`/admin/products/${row.id}`) }
@@ -118,4 +132,3 @@ const columns = computed(() => [
   }
 ])
 </script>
-

@@ -36,29 +36,32 @@
               <div
                 class="absolute inset-0 flex flex-col items-end justify-center gap-3 px-6 text-white sm:px-12 md:px-24"
               >
-                <!-- <p
+                <p
                   v-if="slide.subtitle"
                   class="text-xs font-medium tracking-[0.3em] text-sky-300 md:text-sm"
                 >
                   {{ slide.subtitle }}
                 </p>
                 <h1
+                  v-if="slide.title"
                   class="text-2xl font-bold leading-tight md:text-4xl xl:text-5xl"
                 >
                   {{ slide.title }}
                 </h1>
                 <p
+                  v-if="slide.description"
                   class="max-w-xl text-sm leading-relaxed text-slate-100 md:text-base"
                 >
                   {{ slide.description }}
                 </p>
                 <NuxtLink
+                  v-if="slide.ctaLink && slide.ctaLabel"
                   :to="slide.ctaLink"
                   class="inline-flex items-center gap-2 rounded-full bg-sky-500 px-5 py-2 text-sm font-medium text-white transition hover:bg-sky-600"
                 >
                   {{ slide.ctaLabel }}
                   <Icon name="ph:arrow-left-duotone" size="18" />
-                </NuxtLink> -->
+                </NuxtLink>
               </div>
             </article>
           </div>

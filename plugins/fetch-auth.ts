@@ -1,29 +1,22 @@
 import { useAuthStore } from "~/stores/auth";
 
+function normalizeBase(base: string): string {
+  const cleaned = String(base || "").replace(/\/$/, "");
+  // Relative base (same host) or absolute that should stay intact
+  try {
+    if (process.client) {
+      return new URL(cleaned, window.location.origin).toString().replace(/\/$/, "");
+    }
+  } catch {
+    /* ignore */
+  }
+  return cleaned;
+}
+
 export default defineNuxtPlugin((nuxtApp) => {
   const config = useRuntimeConfig();
   const base = (config.public as any)?.apiBase || "/api/v1";
-
-  // Normalize base URL for non-local hosts: if config points to localhost
-  // but the app is opened via an IP/host, swap hostname to current host.
-  let normalizedBase = String(base);
-  try {
-    if (process.client) {
-      const url = new URL(normalizedBase, window.location.origin);
-      const isLocal = ["localhost", "127.0.0.1", "::1"].includes(url.hostname);
-      const hereIsLocal = ["localhost", "127.0.0.1", "::1"].includes(
-        window.location.hostname
-      );
-      if (isLocal && !hereIsLocal) {
-        url.hostname = window.location.hostname;
-      }
-      normalizedBase = url.toString().replace(/\/$/, "");
-    } else {
-      normalizedBase = String(base).replace(/\/$/, "");
-    }
-  } catch {
-    normalizedBase = String(base).replace(/\/$/, "");
-  }
+  const normalizedBase = normalizeBase(base);
 
   const apiFetch = $fetch.create({
     baseURL: normalizedBase,

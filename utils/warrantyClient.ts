@@ -45,6 +45,25 @@ export async function findWarrantyBySerial(
   serial: string
 ): Promise<WarrantyRecord | null> {
   const key = normSerial(serial);
+  const { public: pub } =
+    typeof useRuntimeConfig === "function"
+      ? useRuntimeConfig()
+      : ({ public: {} } as any);
+  const rawBase =
+    (pub as any).warrantyApiBase || (pub as any).apiBase || "/api/v1";
+  const base = (() => {
+    const cleaned = String(rawBase || "").replace(/\/$/, "");
+    try {
+      if (process.client) {
+        return new URL(cleaned, window.location.origin)
+          .toString()
+          .replace(/\/$/, "");
+      }
+    } catch {
+      /* ignore */
+    }
+    return cleaned;
+  })();
 
   // Try backend API first
   try {
@@ -61,18 +80,8 @@ export async function findWarrantyBySerial(
       warrantyName?: string; // e.g. brand/provider name
     };
 
-    // Resolve base URL from runtime config if provided, else localhost:3100
-    const { public: pub } =
-      typeof useRuntimeConfig === "function"
-        ? useRuntimeConfig()
-        : ({ public: {} } as any);
-    const base: string =
-      (pub as any).warrantyApiBase || "http://192.168.1.159:3100";
-
     const remote = await $fetch<RemoteItem[]>(
-      `${base.replace(/\/$/, "")}/api/v1/warranty/inquiry/${encodeURIComponent(
-        key
-      )}`
+      `${base.replace(/\/$/, "")}/warranty/inquiry/${encodeURIComponent(key)}`
     );
 
     if (Array.isArray(remote) && remote.length > 0) {
