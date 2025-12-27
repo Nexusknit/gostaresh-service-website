@@ -42,7 +42,7 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  ssr: false,
+  ssr: true,
 
   modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "@pinia/nuxt", "@nuxt/icon"],
 
