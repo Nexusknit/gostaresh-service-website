@@ -1,8 +1,6 @@
 ﻿import { storeToRefs } from 'pinia'
 import { useAuthStore } from '~/stores/auth'
 
-export type { AuthUser } from '~/stores/auth'
-
 type LoginPayload = { userName: string; password: string }
 
 export function useAuth() {
