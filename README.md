@@ -72,4 +72,33 @@ yarn preview
 bun run preview
 ```
 
+## cPanel Node.js (Production)
+
+Use this flow after cloning the repo on your server.
+
+1) Create a Node.js App in cPanel:
+   - Application root: /home/USER/path/to/repo
+   - Application startup file: server.mjs (or app.js)
+   - Application URL: your domain or subdomain
+   - Node.js version: 18+ (20 recommended)
+
+2) Set environment variables (cPanel UI or `.env`):
+   - NODE_ENV=production
+   - NUXT_PUBLIC_API_BASE=https://api.example.com/api/v1
+   - NUXT_PUBLIC_API_ORIGIN=https://api.example.com
+   - NUXT_PUBLIC_WARRANTY_API_BASE=https://api.example.com/api/v1
+   - If you change public values later, rebuild and restart.
+
+3) Run in terminal:
+
+```bash
+npm install
+npm run build
+```
+
+4) Restart the Node.js App in cPanel.
+
+The server reads `PORT`/`HOST` from cPanel automatically. If `.output` is missing,
+run `npm run build` before restarting.
+
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
