@@ -89,6 +89,7 @@ Use this flow after cloning the repo on your server.
    - NUXT_PUBLIC_WARRANTY_API_BASE=https://api.example.com/api/v1
    - If you change public values later, rebuild and restart.
    - If the build is killed on low-memory servers, set NUXT_DISABLE_PRERENDER=1.
+   - If it still gets killed, set NUXT_DISABLE_NITRO_MINIFY=1.
 
 3) Run in terminal:
 

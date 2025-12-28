@@ -4,6 +4,9 @@ const disablePrerender = ["1", "true", "yes"].includes(
   (process.env.NUXT_DISABLE_PRERENDER || "").toLowerCase()
 );
 const enablePrerender = !disablePrerender;
+const disableNitroMinify = ["1", "true", "yes"].includes(
+  (process.env.NUXT_DISABLE_NITRO_MINIFY || "").toLowerCase()
+);
 const REPRESENTATIVES_SIGNUP_PATH = "/representatives/signup";
 
 const routeRules = {
@@ -105,6 +108,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    minify: !disableNitroMinify,
     prerender: {
       routes: blogRoutes,
       crawlLinks: enablePrerender,
