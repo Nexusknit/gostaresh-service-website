@@ -1,25 +1,32 @@
 import { readFileSync } from "node:fs";
 
-const blogRoutes: string[] = (() => {
-  try {
-    const raw = readFileSync(
-      new URL("./public/data/blogs.json", import.meta.url),
-      "utf-8"
-    );
-    const data = JSON.parse(raw) as Array<{ slug?: string }>;
-    if (Array.isArray(data)) {
-      return data
-        .map((item) => (item && item.slug ? `/education/${item.slug}` : null))
-        .filter((route): route is string => Boolean(route));
-    }
-  } catch (error) {
-    console.warn(
-      "[nuxt.config] Failed to read blog routes for prerender",
-      error
-    );
-  }
-  return [];
-})();
+const disablePrerender = ["1", "true", "yes"].includes(
+  (process.env.NUXT_DISABLE_PRERENDER || "").toLowerCase()
+);
+const enablePrerender = !disablePrerender;
+
+const blogRoutes: string[] = enablePrerender
+  ? (() => {
+      try {
+        const raw = readFileSync(
+          new URL("./public/data/blogs.json", import.meta.url),
+          "utf-8"
+        );
+        const data = JSON.parse(raw) as Array<{ slug?: string }>;
+        if (Array.isArray(data)) {
+          return data
+            .map((item) => (item && item.slug ? `/education/${item.slug}` : null))
+            .filter((route): route is string => Boolean(route));
+        }
+      } catch (error) {
+        console.warn(
+          "[nuxt.config] Failed to read blog routes for prerender",
+          error
+        );
+      }
+      return [];
+    })()
+  : [];
 
 const SITE_NAME =
   "\u06af\u0633\u062a\u0631\u0634 \u0633\u0631\u0648\u06cc\u0633";
@@ -66,9 +73,7 @@ export default defineNuxtConfig({
     },
   },
 
-  routeRules: {
-    "/education/**": { prerender: true },
-  },
+  routeRules: enablePrerender ? { "/education/**": { prerender: true } } : {},
 
   tailwindcss: { viewer: false },
 
@@ -93,7 +98,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: blogRoutes,
-      crawlLinks: true,
+      crawlLinks: enablePrerender,
     },
   },
 });
