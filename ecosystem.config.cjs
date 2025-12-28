@@ -4,7 +4,7 @@ module.exports = {
       name: "gostaresh-website",
       exec_mode: "cluster",
       instances: "max",
-      script: "./.output/server/index.mjs",
+      script: "./server.mjs",
       env: {
         NODE_ENV: "production",
         PORT: 3000,
