@@ -4,6 +4,15 @@ const disablePrerender = ["1", "true", "yes"].includes(
   (process.env.NUXT_DISABLE_PRERENDER || "").toLowerCase()
 );
 const enablePrerender = !disablePrerender;
+const REPRESENTATIVES_SIGNUP_PATH = "/representatives/signup";
+
+const routeRules = {
+  [REPRESENTATIVES_SIGNUP_PATH]: {
+    prerender: false,
+    redirect: { to: "/representatives", statusCode: 302 },
+  },
+  ...(enablePrerender ? { "/education/**": { prerender: true } } : {}),
+};
 
 const blogRoutes: string[] = enablePrerender
   ? (() => {
@@ -73,7 +82,7 @@ export default defineNuxtConfig({
     },
   },
 
-  routeRules: enablePrerender ? { "/education/**": { prerender: true } } : {},
+  routeRules,
 
   tailwindcss: { viewer: false },
 
@@ -99,6 +108,7 @@ export default defineNuxtConfig({
     prerender: {
       routes: blogRoutes,
       crawlLinks: enablePrerender,
+      ignore: [REPRESENTATIVES_SIGNUP_PATH],
     },
   },
 });
