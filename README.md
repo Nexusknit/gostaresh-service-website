@@ -78,7 +78,7 @@ Use this flow after cloning the repo on your server.
 
 1) Create a Node.js App in cPanel:
    - Application root: /home/USER/path/to/repo
-   - Application startup file: server.mjs (or app.js)
+   - Application startup file: server.mjs
    - Application URL: your domain or subdomain
    - Node.js version: 18+ (20 recommended)
 

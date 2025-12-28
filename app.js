@@ -1,1 +1,1 @@
-import "./server.mjs";
+export { default } from "./app.vue";
