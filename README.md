@@ -80,7 +80,7 @@ Use this flow after cloning the repo on your server.
    - Application root: /home/USER/path/to/repo
    - Application startup file: server.mjs
    - Application URL: your domain or subdomain
-   - Node.js version: 18+ (20 recommended)
+   - Node.js version: 20.19+ or 22.12+
 
 2) Set environment variables (cPanel UI or `.env`):
    - NODE_ENV=production

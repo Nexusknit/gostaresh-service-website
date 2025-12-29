@@ -20,7 +20,7 @@
     "dotenv": "^16.6.1",
     "jalaliday": "^3.1.1",
     "naive-ui": "^2.43.1",
-    "nuxt": "^4.1.2",
+    "nuxt": "^4.2.2",
     "pinia": "^3.0.4",
     "vdirs": "^0.1.8",
     "vite-tsconfig-paths": "^5.1.4",
