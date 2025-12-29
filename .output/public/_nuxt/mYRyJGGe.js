@@ -1,0 +1,1 @@
+import{aV as r,a_ as f}from"./vp8MPyNN.js";function h(){const o=r(),{token:n,isLoggedIn:s,user:e,permissions:a}=f(o);async function i(t){await o.login(t)}async function u(){await o.logout()}async function c(t){await o.fetchMe(t)}return{token:n,isLoggedIn:s,user:e,permissions:a,login:i,logout:u,fetchMe:c}}export{h as u};

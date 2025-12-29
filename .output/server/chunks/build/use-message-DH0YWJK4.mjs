@@ -1,0 +1,2 @@
+import{inject as e}from"vue";import{ap as s,aq as o}from"./server.mjs";function useMessage(){const t=e(s,null);return null===t&&o("use-message","No outer <n-message-provider /> founded. See prerequisite in https://www.naiveui.com/en-US/os-theme/components/message for more details. If you want to use `useMessage` outside setup, please check https://www.naiveui.com/zh-CN/os-theme/components/message#Q-&-A."),t}export{useMessage as u};
+//# sourceMappingURL=use-message-DH0YWJK4.mjs.map

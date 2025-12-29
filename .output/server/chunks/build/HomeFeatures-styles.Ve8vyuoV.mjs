@@ -1,0 +1,2 @@
+const e=[".header-title[data-v-a0fb705f] h2{font-size:1.5rem;font-weight:700;line-height:2rem;line-height:1.25}@media(min-width:768px){.header-title[data-v-a0fb705f] h2{font-size:1.875rem;line-height:2.25rem}}.header-title[data-v-a0fb705f] p{font-size:1rem;line-height:1.5rem;--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}"];export{e as default};
+//# sourceMappingURL=HomeFeatures-styles.Ve8vyuoV.mjs.map

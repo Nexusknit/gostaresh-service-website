@@ -1,0 +1,2 @@
+import{computed as e}from"vue";import{u as r}from"./useAuth-BCA76F4T.mjs";function useAccess(){const{user:s,permissions:n}=r(),o=e(()=>{const e=new Set(Array.isArray(n.value)?n.value.map(e=>String(e)):[]),r=s.value||{};for(const s of r.roles||[])for(const r of s.permissions||[])r?.name&&e.add(String(r.name));return e});function hasPerm(e){return o.value.has(e)}return{hasPerm:hasPerm,hasAny:function(e){return e.some(e=>hasPerm(e))},hasAll:function(e){return e.every(e=>hasPerm(e))},permSet:o}}export{useAccess as u};
+//# sourceMappingURL=useAccess-BGBQvVbm.mjs.map

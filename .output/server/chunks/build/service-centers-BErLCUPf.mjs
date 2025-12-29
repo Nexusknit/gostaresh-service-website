@@ -1,0 +1,2 @@
+let t=null,a=null;const loadCenters=async()=>{if(t)return t;const a=(await import("./service-centers-DIlSFSAF.mjs")).default;return t=a,a},getServiceCenters=async()=>(await loadCenters()).slice().sort((t,a)=>t.city.localeCompare(a.city,"fa")),findServiceCenter=async t=>(await(async()=>{if(a)return a;const t=await loadCenters();return a=t.reduce((t,a)=>(t[a.slug]=a,t),{}),a})())[t];export{findServiceCenter as f,getServiceCenters as g};
+//# sourceMappingURL=service-centers-BErLCUPf.mjs.map
