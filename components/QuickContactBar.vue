@@ -53,15 +53,17 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 type QC = { phone: string; whatsapp: string; email: string; ticket: string };
 const contact = ref<QC | null>(null);
 const ready = ref(false);
 
 onMounted(async () => {
-  contact.value = (
-    await import("@/public/data/quick-contacts.json")
-  ).default as QC;
+  contact.value = await fetchPublicContentSafe<QC | null>(
+    "quick-contacts",
+    null
+  );
   ready.value = contact.value !== null;
 });
 </script>

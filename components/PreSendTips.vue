@@ -23,16 +23,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { NSkeleton } from "naive-ui";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 const tips = ref<string[]>([]);
 
 onMounted(async () => {
-  try {
-    tips.value = (
-      await import("@/public/data/pre-send-tips.json")
-    ).default as string[];
-  } catch {
-    tips.value = [];
-  }
+  tips.value = await fetchPublicContentSafe<string[]>("pre-send-tips", []);
 });
 </script>

@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from "vue";
 import { NStatistic, NSkeleton } from "naive-ui";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 type Stat = { id: string; label: string; value: number; suffix?: string };
 
@@ -55,8 +56,7 @@ const rootEl = ref<HTMLElement | null>(null);
 
 onMounted(async () => {
   try {
-    stats.value = (await import("@/public/data/service-stats.json"))
-      .default as Stat[];
+    stats.value = await fetchPublicContentSafe<Stat[]>("service-stats", []);
   } finally {
     // شروع انیمیشن بعد از دیده شدن
     const io = new IntersectionObserver(

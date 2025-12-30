@@ -1,17 +1,18 @@
 import type { RbacConfig, AbacConfig, AccessUser } from "@/types/access";
+import { fetchPublicContent } from "@/utils/publicContent";
 
 let _rbac: RbacConfig | null = null;
 let _abac: AbacConfig | null = null;
 
 export async function loadRbac(): Promise<RbacConfig> {
   if (_rbac) return _rbac;
-  _rbac = (await import("@/public/data/rbac-roles.json")).default as RbacConfig;
+  _rbac = await fetchPublicContent<RbacConfig>("rbac-roles");
   return _rbac;
 }
 
 export async function loadAbac(): Promise<AbacConfig> {
   if (_abac) return _abac;
-  _abac = (await import("@/public/data/abac-rules.json")).default as AbacConfig;
+  _abac = await fetchPublicContent<AbacConfig>("abac-rules");
   return _abac;
 }
 
@@ -66,4 +67,3 @@ export async function can(
   }
   return true;
 }
-

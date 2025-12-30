@@ -63,6 +63,7 @@
 </template>
 
 <script setup lang="ts">
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 type Feature = {
   title: string;
   desc: string;
@@ -82,8 +83,7 @@ useHead({
   ],
 });
 
-const features = (await import("@/public/data/home-features.json"))
-  .default as Feature[];
+const features = await fetchPublicContentSafe<Feature[]>("home-features", []);
 </script>
 
 <style scoped>

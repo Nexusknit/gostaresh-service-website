@@ -25,6 +25,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import { NInput, NCollapse, NCollapseItem, NSkeleton } from "naive-ui";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 type QA = { q: string; a: string };
 
@@ -32,9 +33,7 @@ const faqs = ref<QA[]>([]);
 const q = ref("");
 
 onMounted(async () => {
-  faqs.value = (
-    await import("@/public/data/faq.json")
-  ).default as QA[];
+  faqs.value = await fetchPublicContentSafe<QA[]>("faq", []);
 });
 
 const filtered = computed(() => {

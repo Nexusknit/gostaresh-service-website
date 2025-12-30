@@ -1,4 +1,5 @@
-﻿import type { ServiceCenter, ServiceCenterMap } from "@/types/service-center";
+import type { ServiceCenter, ServiceCenterMap } from "@/types/service-center";
+import { fetchPublicContent } from "@/utils/publicContent";
 
 let cachedCenters: ServiceCenter[] | null = null;
 let cachedMap: ServiceCenterMap | null = null;
@@ -7,10 +8,8 @@ const loadCenters = async (): Promise<ServiceCenter[]> => {
   if (cachedCenters) {
     return cachedCenters;
   }
-  const data = (await import("@/public/data/service-centers.json"))
-    .default as ServiceCenter[];
-  cachedCenters = data;
-  return data;
+  cachedCenters = await fetchPublicContent<ServiceCenter[]>("service-centers");
+  return cachedCenters;
 };
 
 export const getServiceCenters = async (): Promise<ServiceCenter[]> => {

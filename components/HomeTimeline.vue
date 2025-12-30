@@ -31,11 +31,11 @@
 </template>
 
 <script setup lang="ts">
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 type Step = {
   title: string;
   desc: string;
 };
 
-const steps = (await import("@/public/data/home-timeline.json"))
-  .default as Step[];
+const steps = await fetchPublicContentSafe<Step[]>("home-timeline", []);
 </script>

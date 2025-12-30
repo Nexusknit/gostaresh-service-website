@@ -1,13 +1,12 @@
 import type { CategoriesData, ParentCategory, ChildCategory } from "@/types/category";
+import { fetchPublicContent } from "@/utils/publicContent";
 
 let _data: CategoriesData | null = null;
 
 export async function loadCategories(): Promise<CategoriesData> {
   if (_data) return _data;
-  const data = (await import("@/public/data/categories.json"))
-    .default as CategoriesData;
-  _data = data;
-  return data;
+  _data = await fetchPublicContent<CategoriesData>("categories");
+  return _data;
 }
 
 export async function getParentCategories(): Promise<ParentCategory[]> {
@@ -32,4 +31,3 @@ export async function findChildCategory(
   const d = await loadCategories();
   return d.children.find((c) => c.parentSlug === parentSlug && c.slug === slug);
 }
-

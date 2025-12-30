@@ -1,13 +1,12 @@
 import type { Product } from "@/types/product";
+import { fetchPublicContent } from "@/utils/publicContent";
 
 let _products: Product[] | null = null;
 
 export async function loadProducts(): Promise<Product[]> {
   if (_products) return _products;
-  const data = (await import("@/public/data/products.json"))
-    .default as Product[];
-  _products = data;
-  return data;
+  _products = await fetchPublicContent<Product[]>("products");
+  return _products;
 }
 
 export async function getProducts(): Promise<Product[]> {
@@ -51,4 +50,3 @@ export function formatToman(amount: number): string {
     return `${amount} تومان`;
   }
 }
-

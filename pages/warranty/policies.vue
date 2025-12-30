@@ -187,6 +187,7 @@ import {
   NEllipsis,
   NPagination,
 } from "naive-ui";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 type Policy = {
   id: string;
@@ -197,7 +198,7 @@ type Policy = {
   conditions?: string;
 };
 
-const raw = (await import("@/public/data/policies.json")).default as Policy[];
+const raw = await fetchPublicContentSafe<Policy[]>("policies", []);
 
 const normalizeBrand = (b: string) =>
   (({ Kingstone: "Kingston", MIKROTIK: "Mikrotik" } as Record<string, string>)[

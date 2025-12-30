@@ -15,31 +15,12 @@ export type WarrantyRecord = {
   policyRef?: { brand: string; category: string };
 };
 
-export type WarrantyDB = {
-  meta: { version: number; updatedAt: string };
-  records: WarrantyRecord[];
-};
-
 const toEn = (s: string) =>
-  s.replace(/[۰-۹]/g, (d) => "0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)]);
+  s.replace(/[??-??]/g, (d) => "0123456789"["?????�??????????????".indexOf(d)]);
 const normSerial = (v: string) =>
   toEn(v)
     .replace(/[^A-Za-z0-9-]/g, "")
     .toUpperCase();
-
-let _cache: WarrantyDB | null = null;
-
-export async function loadDB(): Promise<WarrantyDB> {
-  if (_cache) return _cache;
-  try {
-    _cache = await $fetch<WarrantyDB>("/mock/warranty-mock.json");
-  } catch {
-    // fallback (اختیاری) اگر فایل را در مسیر data/ گذاشتی
-    const local = await import("@/public/data/warranty-mock.json");
-    _cache = local.default as WarrantyDB;
-  }
-  return _cache;
-}
 
 export async function findWarrantyBySerial(
   serial: string
@@ -103,7 +84,7 @@ export async function findWarrantyBySerial(
           current: "registered",
           history: [
             r.startDate
-              ? { key: "registered", at: r.startDate, note: "شروع گارانتی" }
+              ? { key: "registered", at: r.startDate, note: "�?�?�?�? �?�?�?�?????�?" }
               : undefined,
           ].filter(Boolean) as { key: string; at: string; note?: string }[],
         },
@@ -113,12 +94,8 @@ export async function findWarrantyBySerial(
       return mapped;
     }
   } catch {
-    // ignore and fall back to local mock DB
+    // ignore and fall back to null
   }
 
-  // Fallback: search local mock DB
-  const db = await loadDB();
-  return (
-    db.records.find((r) => r.serials.some((s) => normSerial(s) === key)) || null
-  );
+  return null;
 }

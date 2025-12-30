@@ -2,11 +2,11 @@
   <div class="container mx-auto px-4 py-10" dir="rtl">
     <header class="mb-10 text-center">
       <h1 class="text-3xl font-extrabold text-slate-800 mb-3">
-        Ø¢Ù…ÙˆØ²Ø´ Ùˆ Ø¨Ù„Ø§Ú¯
+        ÂãæÒÔ æ ÈáÇ
       </h1>
       <p class="mx-auto max-w-2xl text-slate-600">
-        ØªØ§Ø²Ù‡â€ŒØªØ±ÛŒÙ† Ù†Ú©Ø§Øª Ùˆ Ø¢Ù…ÙˆØ²Ø´â€ŒÙ‡Ø§ÛŒ Ú¯Ø³ØªØ±Ø´ Ø³Ø±ÙˆÛŒØ³ Ø¨Ø±Ø§ÛŒ Ù†Ú¯Ù‡Ø¯Ø§Ø±ÛŒ Ø¨Ù‡ØªØ± Ù…Ø­ØµÙˆÙ„Ø§Øª Ùˆ
-        Ø§Ø³ØªÙØ§Ø¯Ù‡Ù” Ù‡ÙˆØ´Ù…Ù†Ø¯Ø§Ù†Ù‡ Ø§Ø² Ø®Ø¯Ù…Ø§Øª Ù¾Ø³ Ø§Ø² ÙØ±ÙˆØ´.
+        ÊÇÒåÊÑíä ä˜ÇÊ æ ÂãæÒÔåÇí ÓÊÑÔ ÓÑæíÓ ÈÑÇí äåÏÇÑí ÈåÊÑ ãÍÕæáÇÊ æ
+        ÇÓÊİÇÏå? åæÔãäÏÇäå ÇÒ ÎÏãÇÊ Ó ÇÒ İÑæÔ.
       </p>
     </header>
 
@@ -31,7 +31,7 @@
               <span class="rounded-full bg-slate-100 px-3 py-1">
                 {{ formatDate(post.date) }}
               </span>
-              <span>{{ post.readMinutes }} Ø¯Ù‚ÛŒÙ‚Ù‡ Ù…Ø·Ø§Ù„Ø¹Ù‡</span>
+              <span>{{ post.readMinutes }} ÏŞíŞå ãØÇáÚå</span>
             </div>
 
             <h2 class="text-xl font-semibold text-slate-800 leading-tight">
@@ -60,13 +60,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import type { BlogPost } from "@/types/blog";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 useSeoMeta({
-  title: "Ø¢Ù…ÙˆØ²Ø´ Ùˆ Ø¨Ù„Ø§Ú¯",
-  description: "Ù…Ø¬Ù…ÙˆØ¹Ù‡ Ù…Ù‚Ø§Ù„Ø§Øª Ùˆ Ù†Ú©Ø§Øª Ø¢Ù…ÙˆØ²Ø´ÛŒ Ú¯Ø³ØªØ±Ø´ Ø³Ø±ÙˆÛŒØ³ Ø¨Ø±Ø§ÛŒ Ú©Ø§Ø±Ø¨Ø±Ø§Ù† Ø®Ø¯Ù…Ø§Øª Ù¾Ø³ Ø§Ø² ÙØ±ÙˆØ´",
+  title: "ÂãæÒÔ æ ÈáÇ",
+  description: "ãÌãæÚå ãŞÇáÇÊ æ ä˜ÇÊ ÂãæÒÔí ÓÊÑÔ ÓÑæíÓ ÈÑÇí ˜ÇÑÈÑÇä ÎÏãÇÊ Ó ÇÒ İÑæÔ",
 });
 
-const posts = (await import("@/public/data/blogs.json")).default as BlogPost[];
+const posts = await fetchPublicContentSafe<BlogPost[]>("blogs", []);
 
 const orderedPosts = computed(() =>
   [...posts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())

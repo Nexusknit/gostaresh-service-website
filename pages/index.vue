@@ -205,6 +205,7 @@ import StatsStrip from "@/components/StatsStrip.vue";
 import HomeServiceCenters from "@/components/HomeServiceCenters.vue";
 import HomeFeaturedProducts from "@/components/HomeFeaturedProducts.vue";
 import type { BlogPost } from "@/types/blog";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 type ActionCard = {
   title: string;
@@ -223,8 +224,10 @@ type HeroSlide = {
   image: string;
 };
 
-const heroSlides = (await import("@/public/data/hero-slides.json"))
-  .default as HeroSlide[];
+const heroSlides = await fetchPublicContentSafe<HeroSlide[]>(
+  "hero-slides",
+  []
+);
 
 const HERO_SLIDE_DURATION = 6000;
 const currentHeroSlide = ref(0);
@@ -288,8 +291,7 @@ useSeoMeta({
   description: "گسترش سرویس — سامانهٔ استعلام وضعیت و شرایط گارانتی برندها",
 });
 
-const blogData = (await import("@/public/data/blogs.json"))
-  .default as BlogPost[];
+const blogData = await fetchPublicContentSafe<BlogPost[]>("blogs", []);
 
 const actionCards: ActionCard[] = [
   {

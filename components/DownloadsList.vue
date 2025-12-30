@@ -33,13 +33,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { NSkeleton } from "naive-ui";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 type DL = { id: string; title: string; file: string; updated?: string };
 const files = ref<DL[]>([]);
 
 onMounted(async () => {
-  files.value = (
-    await import("@/public/data/downloads.json")
-  ).default as DL[];
+  files.value = await fetchPublicContentSafe<DL[]>("downloads", []);
 });
 </script>

@@ -121,6 +121,7 @@ import type { Product } from '@/types/product'
 import type { Brand } from '@/types/brand'
 import { getProducts, formatToman } from '@/utils/products'
 import { getParentCategories, getChildCategories } from '@/utils/categories'
+import { fetchPublicContentSafe } from '@/utils/publicContent'
 
 definePageMeta({ layout: 'default' })
 
@@ -140,8 +141,7 @@ const parentOptions = computed(() => parentList.value.map((p) => ({ label: p.tit
 const childOptions = ref<{ label: string; value: string }[]>([])
 
 watchEffect(async () => {
-  const data = (await import('@/public/data/brands.json')).default as Brand[]
-  brands.value = data
+  brands.value = await fetchPublicContentSafe<Brand[]>('brands', [])
 })
 
 watchEffect(async () => {

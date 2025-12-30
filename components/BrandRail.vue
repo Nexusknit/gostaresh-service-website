@@ -46,19 +46,13 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 type Brand = { name: string; logo: string };
 
 const brands = ref<Brand[]>([]);
 
-try {
-  brands.value = (await $fetch<Brand[]>("/data/brands.json")) ?? [];
-} catch {
-  try {
-    brands.value = (await import("@/public/data/brands.json"))
-      .default as Brand[];
-  } catch {}
-}
+brands.value = await fetchPublicContentSafe<Brand[]>("brands", []);
 
 const isHovered = ref(false);
 

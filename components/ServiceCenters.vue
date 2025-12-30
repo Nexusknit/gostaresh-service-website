@@ -69,6 +69,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import { NInput, NSkeleton } from "naive-ui";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 type Center = {
   id: string;
@@ -85,9 +86,7 @@ const centers = ref<Center[]>([]);
 const q = ref("");
 
 onMounted(async () => {
-  centers.value = (
-    await import("@/public/data/service-centers.json")
-  ).default as Center[];
+  centers.value = await fetchPublicContentSafe<Center[]>("service-centers", []);
 });
 
 const filtered = computed(() => {

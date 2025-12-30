@@ -19,6 +19,7 @@ import { useRoute } from 'vue-router'
 import ProductCard from '@/components/Product/ProductCard.vue'
 import type { Brand } from '@/types/brand'
 import { getProductsByBrand } from '@/utils/products'
+import { fetchPublicContentSafe } from '@/utils/publicContent'
 
 definePageMeta({ layout: 'default' })
 
@@ -26,9 +27,8 @@ const route = useRoute()
 const slug = String(route.params.slug || '')
 const products = await getProductsByBrand(slug)
 let brand: Brand | null = null
-try {
-  const list = (await import('@/public/data/brands.json')).default as Brand[]
-  brand = list.find((b) => (b.slug || b.name.toLowerCase().replace(/\s+/g, '-')) === slug) || null
-} catch {}
+const list = await fetchPublicContentSafe<Brand[]>('brands', [])
+brand =
+  list.find((b) => (b.slug || b.name.toLowerCase().replace(/\s+/g, '-')) === slug) ||
+  null
 </script>
-

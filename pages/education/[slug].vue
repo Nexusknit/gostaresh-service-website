@@ -57,10 +57,11 @@
 import { computed } from "vue";
 import { createError } from "h3";
 import type { BlogPost } from "@/types/blog";
+import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 const route = useRoute();
 
-const posts = (await import("@/public/data/blogs.json")).default as BlogPost[];
+const posts = await fetchPublicContentSafe<BlogPost[]>("blogs", []);
 
 const slug = computed(() => route.params.slug as string);
 
