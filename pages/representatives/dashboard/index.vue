@@ -13,3 +13,14 @@
     </NuxtLink>
   </section>
 </template>
+
+<script setup lang="ts">
+definePageMeta({ layout: "default" })
+
+usePageSeo({
+  title: "Service Center Dashboard",
+  description: "Service center portal and onboarding information.",
+  image: "/images/banners/banner.jpg",
+  noindex: true,
+})
+</script>

@@ -43,5 +43,17 @@ const route = useRoute()
 const slug = String(route.params.slug || '')
 const product = await findProduct(slug)
 const priceText = computed(() => (product ? formatToman(product.priceToman) : ''))
-</script>
 
+const seoTitle = computed(() => product?.title || 'Product')
+const seoDescription = computed(
+  () => product?.summary || product?.shortDescription || product?.description || undefined
+)
+const seoImage = computed(() => product?.gallery?.[0] || undefined)
+
+usePageSeo({
+  title: seoTitle,
+  description: seoDescription,
+  image: seoImage,
+  noindex: !product,
+})
+</script>

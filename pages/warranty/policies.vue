@@ -366,7 +366,9 @@ watch(filteredRows, (items) => {
   }
 });
 
-useSeoMeta({ title: "شرایط گارانتی برندها" });
+usePageSeo({
+  title: "Warranty Policies",
+});
 </script>
 
 

@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import ProductCard from '@/components/Product/ProductCard.vue'
 import { getProductsByCategory } from '@/utils/products'
@@ -21,5 +22,15 @@ const route = useRoute()
 const parentSlug = String(route.params.parent || '')
 const childSlug = String(route.params.child || '')
 const products = await getProductsByCategory(parentSlug, childSlug)
-</script>
 
+const seoTitle = computed(() => `Category: ${parentSlug} / ${childSlug}`)
+const seoDescription = computed(
+  () => `Products in ${parentSlug} / ${childSlug}.`
+)
+
+usePageSeo({
+  title: seoTitle,
+  description: seoDescription,
+  image: '/images/banners/banner.jpg',
+})
+</script>

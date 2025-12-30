@@ -31,4 +31,11 @@ const list = await fetchPublicContentSafe<Brand[]>('brands', [])
 brand =
   list.find((b) => (b.slug || b.name.toLowerCase().replace(/\s+/g, '-')) === slug) ||
   null
+
+usePageSeo({
+  title: brand?.name ? `Brand: ${brand.name}` : 'Brand',
+  description: brand?.summary || brand?.description || undefined,
+  image: brand?.image || brand?.logo || undefined,
+  noindex: !brand,
+})
 </script>

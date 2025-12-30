@@ -30,10 +30,15 @@ import { getParentCategories, getChildCategories } from '@/utils/categories'
 
 definePageMeta({ layout: 'default' })
 
+usePageSeo({
+  title: 'Categories',
+  description: 'Explore product categories and subcategories.',
+  image: '/images/banners/banner.jpg',
+})
+
 const parents = await getParentCategories()
 const children: Record<string, Awaited<ReturnType<typeof getChildCategories>>> = {}
 for (const p of parents) {
   children[p.slug] = await getChildCategories(p.slug)
 }
 </script>
-

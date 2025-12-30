@@ -74,19 +74,55 @@ if (!post.value) {
   });
 }
 
+const config = useRuntimeConfig();
 const coverImage = computed(() => post.value?.cover || undefined);
+const pageTitle = computed(
+  () => post.value?.title || (config.public as any)?.siteName || "Gostaresh Service"
+);
+const pageDescription = computed(
+  () => post.value?.excerpt || (config.public as any)?.siteTagline || undefined
+);
 
-useSeoMeta({
-  title: () => post.value?.title ?? "آموزش",
-  description: () => post.value?.excerpt ?? "مطلب آموزشی گسترش سرویس",
-  ogTitle: () => post.value?.title ?? undefined,
-  ogDescription: () => post.value?.excerpt ?? undefined,
-  ogImage: () => coverImage.value,
-  twitterCard: "summary_large_image",
-  twitterTitle: () => post.value?.title ?? undefined,
-  twitterDescription: () => post.value?.excerpt ?? undefined,
-  twitterImage: () => coverImage.value,
+usePageSeo({
+  title: pageTitle,
+  description: pageDescription,
+  image: coverImage,
+  type: "article",
 });
+
+const { canonicalUrl, toAbsoluteUrl } = useSeoUrls();
+const articleJsonLd = computed(() => {
+  const image = coverImage.value ? toAbsoluteUrl(coverImage.value) : undefined;
+  const payload: Record<string, any> = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: pageTitle.value,
+    description: pageDescription.value,
+    image: image ? [image] : undefined,
+    datePublished: post.value?.date || undefined,
+    dateModified: post.value?.date || undefined,
+    mainEntityOfPage: canonicalUrl.value
+      ? { "@type": "WebPage", "@id": canonicalUrl.value }
+      : undefined,
+    publisher: {
+      "@type": "Organization",
+      name: (config.public as any)?.siteName || "Gostaresh Service",
+    },
+  };
+  Object.keys(payload).forEach((key) => {
+    if (payload[key] === undefined) delete payload[key];
+  });
+  return payload;
+});
+
+useHead(() => ({
+  script: [
+    {
+      type: "application/ld+json",
+      children: JSON.stringify(articleJsonLd.value),
+    },
+  ],
+}));
 
 const formatDate = (iso: string) =>
   new Intl.DateTimeFormat("fa-IR", {

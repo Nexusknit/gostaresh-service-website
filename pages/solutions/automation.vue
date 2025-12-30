@@ -13,3 +13,13 @@
     </NuxtLink>
   </section>
 </template>
+
+<script setup lang="ts">
+definePageMeta({ layout: "default" })
+
+usePageSeo({
+  title: "Automation Solutions",
+  description: "Automation and workflow solutions for service operations.",
+  image: "/images/banners/banner.jpg",
+})
+</script>

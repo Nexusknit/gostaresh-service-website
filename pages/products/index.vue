@@ -125,6 +125,12 @@ import { fetchPublicContentSafe } from '@/utils/publicContent'
 
 definePageMeta({ layout: 'default' })
 
+usePageSeo({
+  title: 'Products',
+  description: 'Browse and filter products by brand, category, and price.',
+  image: '/images/banners/banner.jpg',
+})
+
 const products = ref<Product[]>([])
 const open = reactive({ brand: true, category: true, price: true })
 const brands = ref<Brand[]>([])

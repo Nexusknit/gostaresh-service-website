@@ -21,6 +21,7 @@ const DEFAULT_WARRANTY_API_BASE =
   process.env.NUXT_PUBLIC_WARRANTY_API_BASE ||
   process.env.NUXT_PUBLIC_API_BASE ||
   "/api/v1";
+const DEFAULT_SITE_URL = process.env.NUXT_PUBLIC_SITE_URL || "";
 
 const buildPublicContentUrl = (key: string) => {
   const normalizedKey = String(key || "").trim().replace(/^\//, "");
@@ -75,6 +76,9 @@ export default defineNuxtConfig(async () => {
         apiBase: DEFAULT_API_BASE,
         apiOrigin: DEFAULT_API_ORIGIN,
         warrantyApiBase: DEFAULT_WARRANTY_API_BASE,
+        siteUrl: DEFAULT_SITE_URL,
+        siteName: SITE_NAME,
+        siteTagline: SITE_TAGLINE,
       },
     },
     devtools: { enabled: true },

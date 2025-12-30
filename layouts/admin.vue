@@ -78,6 +78,13 @@ const open = ref(false)
 const route = useRoute()
 const { hasPerm } = useAccess()
 
+useHead({
+  meta: [
+    { name: 'robots', content: 'noindex, nofollow' },
+    { name: 'googlebot', content: 'noindex, nofollow' },
+  ],
+})
+
 const isActive = (suffix: string) => {
   return route.path === `/admin${suffix}`
 }

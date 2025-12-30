@@ -62,9 +62,10 @@ import { computed } from "vue";
 import type { BlogPost } from "@/types/blog";
 import { fetchPublicContentSafe } from "@/utils/publicContent";
 
-useSeoMeta({
+usePageSeo({
   title: "ÂãæÒÔ æ ÈáÇ",
   description: "ãÌãæÚå ãŞÇáÇÊ æ ä˜ÇÊ ÂãæÒÔí ÓÊÑÔ ÓÑæíÓ ÈÑÇí ˜ÇÑÈÑÇä ÎÏãÇÊ Ó ÇÒ İÑæÔ",
+  image: "/images/banners/banner.jpg",
 });
 
 const posts = await fetchPublicContentSafe<BlogPost[]>("blogs", []);
@@ -78,3 +79,4 @@ const formatDate = (iso: string) =>
     dateStyle: "medium",
   }).format(new Date(iso));
 </script>
+

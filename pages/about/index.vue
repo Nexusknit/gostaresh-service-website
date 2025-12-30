@@ -47,9 +47,11 @@
 </template>
 
 <script setup lang="ts">
-useSeoMeta({
+usePageSeo({
   title: 'درباره ما',
   description:
     'معرفی شرکت گسترش افزار رامان پارت؛ بیش از یک دهه تجربه در واردات و توزیع تجهیزات فناوری اطلاعات.',
+  image: "/images/banners/banner.jpg",
 });
 </script>
+

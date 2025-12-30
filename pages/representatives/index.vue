@@ -1,20 +1,20 @@
-๏ปฟ<template>
+<template>
   <div class="space-y-12 pb-24" dir="rtl">
     <!-- Hero -->
     <section class="mx-auto max-w-4xl space-y-6 text-center">
       <div class="space-y-3">
         <p class="text-xs font-semibold tracking-[0.3em] text-sky-500">
-          ุดุจฺฉู ูู…ุงÛูุฏฺฏÛโ€ูุงÛ ฺฏุณุชุฑุด ุณุฑูÛุณ
+          ิศๅ ไใวํไฯํๅวํ ำสัิ ำัๆํำ
         </p>
         <h1 class="text-3xl font-bold text-slate-800 md:text-4xl">
-          ูุฒุฏÛฺฉโ€ุชุฑÛู ู…ุฑฺฉุฒ ุฎุฏู…ุงุช ุฑุณู…Û ุฑุง ูพÛุฏุง ฺฉูÛุฏ
+          ไาฯํสัํไ ใัา ฮฯใวส ัำใํ ัว ํฯว ไํฯ
         </h1>
         <p
           class="mx-auto max-w-3xl text-sm leading-7 text-slate-600 md:text-base"
         >
-          ููุฑุณุช ฺฉุงู…ู ูู…ุงÛูุฏฺฏÛโ€ูุงÛ ู…ูุฑุฏ ุชุฃÛÛุฏ ฺฏุณุชุฑุด ุณุฑูÛุณ ุจู ุชูฺฉÛฺฉ ุดูุฑุ ุจู ูู…ุฑุงู
-          ุชูุถÛุญ ฺฉูุชุงู ุงุฒ ุฎุฏู…ุงุช ูุงุจู ุงุฑุงุฆู ุฏุฑ ูุฑ ู…ุฑฺฉุฒ. ุจู ฺฉู…ฺฉ ุฌุณุชโ€ูุฌู ู ูÛูุชุฑ
-          ุดูุฑุ ุณุฑÛุนโ€ุชุฑ ูู…ุงÛูุฏฺฏÛ ู…ูุงุณุจ ุฑุง ุงูุชุฎุงุจ ฺฉูÛุฏ.
+          Ýๅัำส วใแ ไใวํไฯํๅวํ ใๆัฯ สรํํฯ ำสัิ ำัๆํำ ศๅ สÝํ ิๅัก ศๅ ๅใัวๅ
+          สๆึํอ ๆสวๅ วา ฮฯใวส Þวศแ วัวฦๅ ฯั ๅั ใัา. ศๅ ใ ฬำสๆฬๆ ๆ Ýํแสั
+          ิๅัก ำัํฺสั ไใวํไฯํ ใไวำศ ัว วไสฮวศ ไํฯ.
         </p>
       </div>
 
@@ -28,7 +28,7 @@
             <Icon name="ph:buildings-duotone" size="26" />
           </span>
           <div class="text-right">
-            <p class="text-xs text-slate-500">ุชุนุฏุงุฏ ูู…ุงÛูุฏฺฏÛ ูุนุงู</p>
+            <p class="text-xs text-slate-500">สฺฯวฯ ไใวํไฯํ Ýฺวแ</p>
             <p class="text-lg font-bold text-slate-800">
               {{ toFa(totalCenters) }}
             </p>
@@ -42,7 +42,7 @@
             <Icon name="ph:map-pin-duotone" size="26" />
           </span>
           <div class="text-right">
-            <p class="text-xs text-slate-500">ุชุนุฏุงุฏ ุดูุฑูุงÛ ูพูุดุดโ€ุฏูÛ</p>
+            <p class="text-xs text-slate-500">สฺฯวฯ ิๅัๅวํ ๆิิฯๅํ</p>
             <p class="text-lg font-bold text-slate-800">
               {{ toFa(uniqueCities) }}
             </p>
@@ -69,18 +69,18 @@
           <input
             v-model="searchQuery"
             type="search"
-            placeholder="ุฌุณุชโ€ูุฌูÛ ูู…ุงÛูุฏฺฏÛ ุจุฑ ุงุณุงุณ ูุงู…ุ ุดูุฑ Ûุง ุฎุฏู…ุงุช"
+            placeholder="ฬำสๆฬๆํ ไใวํไฯํ ศั วำวำ ไวใก ิๅั ํว ฮฯใวส"
             class="w-full border-none bg-transparent text-sm focus:outline-none"
           />
         </label>
 
         <div class="flex items-center gap-3">
-          <label class="text-xs font-semibold text-slate-500">ุงูุชุฎุงุจ ุดูุฑ</label>
+          <label class="text-xs font-semibold text-slate-500">วไสฮวศ ิๅั</label>
           <select
             v-model="selectedCity"
             class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm text-slate-600 shadow-sm focus:border-sky-300 focus:bg-white focus:outline-none focus:ring-2 focus:ring-sky-100"
           >
-            <option value="all">ุชู…ุงู… ุดูุฑูุง</option>
+            <option value="all">สใวใ ิๅัๅว</option>
             <option v-for="city in cities" :key="city" :value="city">
               {{ city }}
             </option>
@@ -106,7 +106,7 @@
         v-else
         class="rounded-3xl bg-slate-50 py-16 text-center text-sm text-slate-500"
       >
-        ูÛฺ ูู…ุงÛูุฏฺฏÛ ู…ุทุงุจู ุจุง ุฌุณุชโ€ูุฌูÛ ุดู…ุง ูพÛุฏุง ูุดุฏ.
+        ๅํ ไใวํไฯํ ใุวศÞ ศว ฬำสๆฬๆํ ิใว ํฯว ไิฯ.
       </div>
     </section>
   </div>
@@ -152,24 +152,26 @@ const totalCenters = centers.length;
 const uniqueCities = cities.value.length;
 
 const digitMap = new Map([
-  ["0", "Ûฐ"],
-  ["1", "Ûฑ"],
-  ["2", "Ûฒ"],
-  ["3", "Ûณ"],
-  ["4", "Ûด"],
-  ["5", "Ûต"],
-  ["6", "Ûถ"],
-  ["7", "Ûท"],
-  ["8", "Ûธ"],
-  ["9", "Ûน"],
+  ["0", "?"],
+  ["1", "?"],
+  ["2", "?"],
+  ["3", "?"],
+  ["4", "?"],
+  ["5", "?"],
+  ["6", "?"],
+  ["7", "?"],
+  ["8", "?"],
+  ["9", "?"],
 ]);
 
 const toFa = (value: number | string) =>
   `${value}`.replace(/[0-9]/g, (digit) => digitMap.get(digit) ?? digit);
 
-useSeoMeta({
-  title: "ูู…ุงÛูุฏฺฏÛโ€ูุงÛ ฺฏุณุชุฑุด ุณุฑูÛุณ",
+usePageSeo({
+  title: "ไใวํไฯํๅวํ ำสัิ ำัๆํำ",
   description:
-    "ููุฑุณุช ฺฉุงู…ู ูู…ุงÛูุฏฺฏÛโ€ูุงÛ ุฑุณู…Û ฺฏุณุชุฑุด ุณุฑูÛุณ ุฏุฑ ุณุฑุงุณุฑ ฺฉุดูุฑ ุจู ูู…ุฑุงู ุงุทูุงุนุงุช ฺฉูุชุงู ุงุฒ ุฎุฏู…ุงุช ูุงุจู ุงุฑุงุฆู.",
+    "Ýๅัำส วใแ ไใวํไฯํๅวํ ัำใํ ำสัิ ำัๆํำ ฯั ำัวำั ิๆั ศๅ ๅใัวๅ วุแวฺวส ๆสวๅ วา ฮฯใวส Þวศแ วัวฦๅ.",
+  image: "/images/banners/banner.jpg",
 });
 </script>
+
