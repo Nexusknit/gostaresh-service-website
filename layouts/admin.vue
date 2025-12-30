@@ -35,6 +35,9 @@
               <NuxtLink v-if="hasPerm('product.read')" to="/admin/products" class="nav-item" :class="route.path.startsWith('/admin/products') ? 'is-active' : ''">
                 <Icon name="ph:package-duotone" /> محصولات
               </NuxtLink>
+              <NuxtLink v-if="hasPerm('service_center.read')" to="/admin/service-centers" class="nav-item" :class="route.path.startsWith('/admin/service-centers') ? 'is-active' : ''">
+                <Icon name="ph:buildings-duotone" /> Service Centers
+              </NuxtLink>
               <NuxtLink v-if="hasPerm('article.read')" to="/admin/articles" class="nav-item" :class="route.path.startsWith('/admin/articles') ? 'is-active' : ''">
                 <Icon name="ph:newspaper-duotone" /> مقالات
               </NuxtLink>
@@ -84,4 +87,5 @@ const isActive = (suffix: string) => {
 .nav-item { @apply flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-700 hover:bg-slate-100 transition; }
 .nav-item.is-active { @apply bg-sky-50 text-sky-700 ring-1 ring-sky-200; }
 </style>
+
 

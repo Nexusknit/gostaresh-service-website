@@ -1,4 +1,4 @@
-import { apiGet } from "@/utils/api";
+import { publicGet } from "@/utils/publicApi";
 
 const cache = new Map<string, unknown>();
 
@@ -12,7 +12,7 @@ export async function fetchPublicContent<T>(key: string): Promise<T> {
   if (cache.has(normalized)) {
     return cache.get(normalized) as T;
   }
-  const data = await apiGet<T>(`/public/content/${normalized}`);
+  const data = await publicGet<T>(`/public/content/${normalized}`);
   cache.set(normalized, data);
   return data;
 }

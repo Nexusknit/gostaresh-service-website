@@ -42,7 +42,15 @@ definePageMeta({
   layout: 'admin',
   middleware: ['admin-auth', 'admin-permissions'],
   permissions: {
-    any: ['product.read', 'brand.read', 'category.read', 'article.read', 'user.read', 'website_setting.read'],
+    any: [
+      'product.read',
+      'brand.read',
+      'category.read',
+      'service_center.read',
+      'article.read',
+      'user.read',
+      'website_setting.read',
+    ],
   },
 })
 
@@ -56,6 +64,7 @@ const CARD_CONFIG = [
   { key: 'products', title: 'محصولات', to: '/admin/products', perm: 'product.read' },
   { key: 'brands', title: 'برندها', to: '/admin/brands', perm: 'brand.read' },
   { key: 'categories', title: 'دسته‌بندی‌ها', to: '/admin/categories', perm: 'category.read' },
+  { key: 'service-centers', title: 'Service Centers', to: '/admin/service-centers', perm: 'service_center.read' },
   { key: 'articles', title: 'مقالات', to: '/admin/articles', perm: 'article.read' },
   { key: 'users', title: 'کاربران', to: '/admin/users', perm: 'user.read' },
   { key: 'website-settings', title: 'تنظیمات سایت', to: '/admin/website-settings', perm: 'website_setting.read' },
@@ -73,6 +82,7 @@ async function ping(): Promise<boolean> {
   const checks = [
     { perm: 'product_status.read', url: '/product-statuses' as const },
     { perm: 'product.read', url: '/products' as const },
+    { perm: 'service_center.read', url: '/service-centers' as const },
     { perm: 'website_setting.read', url: '/website-settings' as const },
   ]
   const target = checks.find((check) => hasPerm(check.perm))
@@ -129,3 +139,5 @@ async function fetchCount(key: string) {
   }
 }
 </script>
+
+
