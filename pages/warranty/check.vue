@@ -1,11 +1,11 @@
 <template>
   <div class="space-y-6" dir="rtl">
-    <h1 class="text-xl font-bold">วำสฺแวใ ๆึฺํส วัวไสํ</h1>
+    <h1 class="text-xl font-bold">ุงุณุชุนูุงู… ูุถุนÛุช ฺฏุงุฑุงูุชÛ</h1>
 
-    <!-- Ýัใ -->
+    <!-- ูุฑู… -->
     <n-card :bordered="false" class="rounded-2xl ring-1 ring-slate-200/70">
       <n-alert type="info" :show-icon="true" class="mb-4">
-        ิใวัๅ ัว ฯÞํÞ ๆ ศฯๆไ Ýวีแๅ ๆวัฯ ไํฯ. ไใๆไๅ:
+        ุดู…ุงุฑู ุฑุง ุฏูÛู ู ุจุฏูู ูุงุตูู ูุงุฑุฏ ฺฉูÛุฏ. ูู…ููู:
         <n-tag
           v-for="s in sampleSerials"
           :key="s"
@@ -21,12 +21,12 @@
       </n-alert>
 
       <n-form :model="form" :rules="rules" label-placement="top" ref="formRef">
-        <!-- ใๆศวํแ: ฺใๆฯํ | ฯำสว: ฯั ํ ัฯํÝ -->
+        <!-- ู…ูุจุงÛู: ุนู…ูุฏÛ | ุฏุณฺฉุชุงูพ: ุฏุฑ Ûฺฉ ุฑุฏÛู -->
         <div class="flex flex-col md:flex-row md:items-end gap-4">
-          <!-- ำัํวแ -->
+          <!-- ุณุฑÛุงู -->
           <div class="w-full md:flex-1 md:min-w-[360px]">
             <n-form-item
-              label="ำัํวแ วแว/วัวไสํ ํว ิใวัๅ ัๅํัํ"
+              label="ุณุฑÛุงู ฺฉุงูุง/ฺฏุงุฑุงูุชÛ Ûุง ุดู…ุงุฑู ุฑูฺฏÛุฑÛ"
               path="serial"
               class="mb-0"
             >
@@ -35,7 +35,7 @@
                   v-model:value="form.serial"
                   size="large"
                   clearable
-                  placeholder="ใหแว๐: SN1234567890"
+                  placeholder="ู…ุซูุงู: SN1234567890"
                   @update:value="onSerialInput"
                   @keydown.enter.prevent="submit"
                 >
@@ -46,15 +46,15 @@
               </div>
               <template #feedback>
                 <div class="text-xs text-slate-500">
-                  อัๆÝ วไแํำํ ๆ วฺฯวฯ ใฬวา วำสบ ฮุ สํัๅ ใฬวา.
+                  ุญุฑูู ุงูฺฏูÛุณÛ ู ุงุนุฏุงุฏ ู…ุฌุงุฒ ุงุณุชุ ุฎุท ุชÛุฑู ู…ุฌุงุฒ.
                 </div>
               </template>
             </n-form-item>
           </div>
 
-          <!-- ใๆศวํแ -->
+          <!-- ู…ูุจุงÛู -->
           <div v-if="false" class="w-full md:w-[32%]">
-            <n-form-item label="ใๆศวํแ (วฮสํวัํ)" path="phone" class="mb-0">
+            <n-form-item label="ู…ูุจุงÛู (ุงุฎุชÛุงุฑÛ)" path="phone" class="mb-0">
               <div class="ltr">
                 <n-input
                   v-model:value="form.phone"
@@ -72,13 +72,13 @@
               </div>
               <template #feedback>
                 <div class="text-xs text-slate-500">
-                  ศัวํ วฺแวไ สÛํํั ๆึฺํสก ใํสๆวไํฯ ิใวัๅ ใๆศวํแ ัว ๆวัฯ ไํฯ.
+                  ุจุฑุงÛ ุงุนูุงู ุชุบÛÛุฑ ูุถุนÛุชุ ู…Ûโ€ุชูุงูÛุฏ ุดู…ุงุฑู ู…ูุจุงÛู ุฑุง ูุงุฑุฏ ฺฉูÛุฏ.
                 </div>
               </template>
             </n-form-item>
           </div>
 
-          <!-- ฯใๅๅว -->
+          <!-- ุฏฺฉู…ูโ€ูุง -->
           <div class="w-full md:w-[16%] md:pt-[28px]">
             <div class="flex gap-2 md:justify-end">
               <n-button
@@ -90,7 +90,7 @@
                 :loading="loading"
                 @click="submit"
               >
-                วำสฺแวใ
+                ุงุณุชุนูุงู…
               </n-button>
               <n-button
                 quaternary
@@ -99,7 +99,7 @@
                 class="w-full md:w-auto"
                 @click="resetForm"
               >
-                ว ัฯไ
+                ูพุงฺฉ ฺฉุฑุฏู
               </n-button>
             </div>
           </div>
@@ -107,7 +107,7 @@
       </n-form>
     </n-card>
 
-    <!-- ไสํฬๅ -->
+    <!-- ูุชÛุฌู -->
     <n-card
       v-if="result"
       :segmented="{ content: 'soft', footer: 'soft' }"
@@ -119,9 +119,9 @@
           class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between"
         >
           <div class="flex items-center gap-3">
-            <span class="text-base font-semibold">ไสํฬๅ วำสฺแวใ</span>
+            <span class="text-base font-semibold">ูุชÛุฌู ุงุณุชุนูุงู…</span>
             <n-tag :type="result.warrantyActive ? 'success' : 'error'">
-              {{ result.warrantyActive ? "วัวไสํ Ýฺวแ" : "วัวไสํ ใไÞึํ" }}
+              {{ result.warrantyActive ? "ฺฏุงุฑุงูุชÛ ูุนุงู" : "ฺฏุงุฑุงูุชÛ ู…ููุถÛ" }}
             </n-tag>
           </div>
           <div class="flex items-center gap-2 text-xs text-slate-400">
@@ -154,15 +154,15 @@
                   <Icon :name="statusVisual.icon" />
                 </div>
                 <div class="space-y-1">
-                  <p class="text-sm text-slate-600/80">ๆึฺํส ไๆไํ</p>
+                  <p class="text-sm text-slate-600/80">ูุถุนÛุช ฺฉูููÛ</p>
                   <p class="text-xl font-semibold">
                     {{
-                      result.warrantyActive ? "วัวไสํ Ýฺวแ" : "วัวไสํ ใไÞึํ"
+                      result.warrantyActive ? "ฺฏุงุฑุงูุชÛ ูุนุงู" : "ฺฏุงุฑุงูุชÛ ู…ููุถÛ"
                     }}
                     {{ result.serviceCenter }}
                   </p>
                   <p class="text-xs text-slate-500">
-                    ยฮัํไ ศัๆาัำวไํ: {{ j(result.updatedAt) }}
+                    ุขุฎุฑÛู ุจุฑูุฒุฑุณุงูÛ: {{ j(result.updatedAt) }}
                   </p>
                 </div>
               </div>
@@ -171,14 +171,14 @@
                 class="flex flex-wrap items-center justify-start gap-6 text-slate-700"
               >
                 <div class="min-w-[110px] text-center">
-                  <p class="text-xs text-slate-500">ัๆา ศวÞํใวไฯๅ</p>
+                  <p class="text-xs text-slate-500">ุฑูุฒ ุจุงูÛู…ุงูุฏู</p>
                   <p class="text-3xl font-bold" :class="statusVisual.accent">
                     {{ toFa(remainDays) }}
                   </p>
                 </div>
                 <div class="hidden h-12 w-px bg-white/40 md:block" />
                 <div class="min-w-[140px] text-center">
-                  <p class="text-xs text-slate-500">วํวไ วัวไสํ</p>
+                  <p class="text-xs text-slate-500">ูพุงÛุงู ฺฏุงุฑุงูุชÛ</p>
                   <p class="text-base font-semibold">
                     {{ j(result.expireDate) }}
                   </p>
@@ -220,7 +220,7 @@
             <div
               class="mb-2 flex items-center justify-between text-sm text-slate-600"
             >
-              <span>ํิัÝส ใีัÝ วัวไสํ</span>
+              <span>ูพÛุดุฑูุช ู…ุตุฑู ฺฏุงุฑุงูุชÛ</span>
               <span class="font-medium">{{ toFa(progressPct) }}%</span>
             </div>
             <n-progress
@@ -235,7 +235,7 @@
           </div>
 
           <!-- <div class="space-y-4">
-            <n-divider>ัๆไฯ ัำํฯํ</n-divider>
+            <n-divider>ุฑููุฏ ุฑุณÛุฏฺฏÛ</n-divider>
             <WarrantyStatusSteps :status="result.status" />
           </div> -->
 
@@ -253,14 +253,14 @@
           >
             <div class="flex items-center gap-2">
               <Icon name="ph:map-pin-duotone" class="text-lg text-slate-400" />
-              <span>ใัา ฮฯใวส: {{ result.serviceCenter }}</span>
+              <span>ู…ุฑฺฉุฒ ุฎุฏู…ุงุช: {{ result.serviceCenter }}</span>
             </div>
             <div class="flex items-center gap-2 text-xs text-slate-400">
               <Icon
                 name="ph:clock-counter-clockwise-duotone"
                 class="text-base"
               />
-              <span>ยฮัํไ ศัๆาัำวไํ {{ j(result.updatedAt) }}</span>
+              <span>ุขุฎุฑÛู ุจุฑูุฒุฑุณุงูÛ {{ j(result.updatedAt) }}</span>
             </div>
           </div>
         </div>
@@ -272,13 +272,13 @@
             <template #icon>
               <Icon name="ph:printer-duotone" />
             </template>
-            ว
+            ฺุงูพ
           </n-button>
           <n-button quaternary @click="copyLink">
             <template #icon>
               <Icon name="ph:link-duotone" />
             </template>
-            ํ แํไ ํํัํ
+            ฺฉูพÛ ูÛูฺฉ ูพÛฺฏÛุฑÛ
           </n-button>
           <n-button
             v-if="false"
@@ -289,49 +289,49 @@
             <template #icon>
               <Icon name="ph:chat-circle-text-duotone" />
             </template>
-            Ýฺวแำวาํ ํวใ
+            ูุนุงูุณุงุฒÛ ูพÛุงู…ฺฉ
           </n-button>
         </n-space>
       </template>
     </n-card>
 
-    <!-- ํฯว ไิฯ -->
+    <!-- ูพÛุฏุง ูุดุฏ -->
     <n-result
       v-else-if="hasSearched && !loading"
       status="warning"
-      title="ใๆัฯํ ํวÝส ไิฯ"
-      :description="`ำัํวแ ซ${form.serial || '—'}ป ฯั ำวใวไๅ ํฯว ไิฯ.`"
+      title="ู…ูุฑุฏÛ Ûุงูุช ูุดุฏ"
+      :description="`ุณุฑÛุงู ยซ${form.serial || 'โ€”'}ยป ุฏุฑ ุณุงู…ุงูู ูพÛุฏุง ูุดุฏ.`"
     >
       <template #footer>
         <div class="space-y-2 text-right">
           <div class="text-slate-600 text-sm">
-            แุÝว๐ วํไ ใๆวัฯ ัว ศััำํ ไํฯ:
+            ูุทูุงู ุงÛู ู…ูุงุฑุฏ ุฑุง ุจุฑุฑุณÛ ฺฉูÛุฏ:
           </div>
           <ul class="list-disc pr-5 text-slate-600 text-sm">
-            <li>วา วฺฯวฯ วไแํำํ วำสÝวฯๅ ไํฯ (??0ก ??1 …)</li>
-            <li>Ýวีแๅ ๆ วัวสัๅวํ Ûํัึัๆัํ ัว อะÝ ไํฯ</li>
-            <li>อัๆÝ ัว วไแํำํ ๆ ศาั ๆวัฯ ไํฯ</li>
+            <li>ุงุฒ ุงุนุฏุงุฏ ุงูฺฏูÛุณÛ ุงุณุชูุงุฏู ฺฉูÛุฏ (Ûฐโ’0ุ Ûฑโ’1 โ€ฆ)</li>
+            <li>ูุงุตูู ู ฺฉุงุฑุงฺฉุชุฑูุงÛ ุบÛุฑุถุฑูุฑÛ ุฑุง ุญุฐู ฺฉูÛุฏ</li>
+            <li>ุญุฑูู ุฑุง ุงูฺฏูÛุณÛ ู ุจุฒุฑฺฏ ูุงุฑุฏ ฺฉูÛุฏ</li>
           </ul>
         </div>
       </template>
       <template #action>
         <n-space justify="center">
           <n-button type="primary" secondary @click="resetForm"
-            >วำสฺแวใ ฬฯํฯ</n-button
+            >ุงุณุชุนูุงู… ุฌุฏÛุฏ</n-button
           >
           <NuxtLink to="/warranty/policies">
-            <n-button quaternary>ิัวํุ วัวไสํ ศัไฯๅว</n-button>
+            <n-button quaternary>ุดุฑุงÛุท ฺฏุงุฑุงูุชÛ ุจุฑูุฏูุง</n-button>
           </NuxtLink>
         </n-space>
       </template>
     </n-result>
 
-    <!-- อวแส วๆแํๅ -->
+    <!-- ุญุงูุช ุงููÛู -->
     <n-result
       v-else
       status="info"
-      title="ๅไๆา ฬำสฬๆํํ วไฬวใ ไิฯๅ"
-      description="ำัํวแ/IMEI ัว ๆวัฯ ไํฯ ๆ ฯใๅ วำสฺแวใ ัว ศาไํฯ."
+      title="ูููุฒ ุฌุณุชุฌูÛÛ ุงูุฌุงู… ูุดุฏู"
+      description="ุณุฑÛุงู/IMEI ุฑุง ูุงุฑุฏ ฺฉูÛุฏ ู ุฏฺฉู…ู ุงุณุชุนูุงู… ุฑุง ุจุฒูÛุฏ."
     />
   </div>
 </template>
@@ -376,13 +376,13 @@ type PageResult = {
 const { j } = useJDate();
 const message = useMessage();
 
-/* วฺฯวฯ */
+/* ุงุนุฏุงุฏ */
 const toEn = (s: string) =>
-  s.replace(/[?-?]/g, (d) => "0123456789"["??????????".indexOf(d)]);
+  s.replace(/[Ûฐ-Ûน]/g, (d) => "0123456789"["ÛฐÛฑÛฒÛณÛดÛตÛถÛทÛธÛน".indexOf(d)]);
 const toFa = (n: number | string) =>
-  String(n).replace(/\d/g, (d) => "??????????"[+d]);
+  String(n).replace(/\d/g, (d) => "ÛฐÛฑÛฒÛณÛดÛตÛถÛทÛธÛน"[+d]);
 
-/* ไใๆไๅๅว */
+/* ูู…ูููโ€ูุง */
 const sampleSerials = ["SN1234567890", "AS-TUF-F15-001", "356789012345678"];
 const fillSample = (s: string) => {
   onSerialInput(s);
@@ -392,7 +392,7 @@ const fillSample = (s: string) => {
   );
 };
 
-/* Ýัใ */
+/* ูุฑู… */
 const formRef = ref();
 const loading = ref(false);
 const hasSearched = ref(false);
@@ -415,8 +415,8 @@ const rules = {
       required: true,
       validator: (_: any, v: string) => {
         const s = normalizeSerial(v);
-        if (!s) return new Error("ิใวัๅ ำัํวแ แวาใ วำส");
-        if (s.length < 5) return new Error("อฯวÞแ ? วัวสั");
+        if (!s) return new Error("ุดู…ุงุฑู ุณุฑÛุงู ูุงุฒู… ุงุณุช");
+        if (s.length < 5) return new Error("ุญุฏุงูู Ûต ฺฉุงุฑุงฺฉุชุฑ");
         return true;
       },
       trigger: ["input", "blur"],
@@ -426,7 +426,7 @@ const rules = {
     {
       validator: (_: any, v: string) => {
         if (!v) return true;
-        return /^09\d{9}$/.test(toEn(v)) || new Error("Ýัใส ใๆศวํแ ใฺสศั ไํำส");
+        return /^09\d{9}$/.test(toEn(v)) || new Error("ูุฑู…ุช ู…ูุจุงÛู ู…ุนุชุจุฑ ูÛุณุช");
       },
       trigger: ["input", "blur"],
     },
@@ -442,7 +442,7 @@ const rules = {
   return true;
 };
 
-/* ไสํฬๅ */
+/* ูุชÛุฌู */
 const result = ref<PageResult | null>(null);
 
 const submit = async () => {
@@ -456,7 +456,7 @@ const submit = async () => {
     const rec = await findWarrantyBySerial(form.serial);
     if (!rec) {
       result.value = null;
-      message.warning("ัๆัฯํ ศัวํ วํไ ำัํวแ ํวÝส ไิฯ");
+      message.warning("ุฑฺฉูุฑุฏÛ ุจุฑุงÛ ุงÛู ุณุฑÛุงู Ûุงูุช ูุดุฏ");
       return;
     }
     const last = rec.status.history[rec.status.history.length - 1];
@@ -478,13 +478,13 @@ const submit = async () => {
     };
   } catch {
     result.value = null;
-    message.error("ฮุว ฯั วำสฺแวใ. ฯๆศวัๅ สแวิ ไํฯ.");
+    message.error("ุฎุทุง ุฏุฑ ุงุณุชุนูุงู…. ุฏูุจุงุฑู ุชูุงุด ฺฉูÛุฏ.");
   } finally {
     loading.value = false;
   }
 };
 
-/* ใอวำศวส ไใวํิํ */
+/* ู…ุญุงุณุจุงุช ูู…ุงÛุดÛ */
 const remainDays = computed(() => {
   if (!result.value) return 0;
   const ms = new Date(result.value.expireDate).getTime() - Date.now();
@@ -540,35 +540,35 @@ const detailCards = computed(() => {
 
   return [
     {
-      label: "ไวใ ใอีๆแ",
-      value: r.model || "—",
+      label: "ูุงู… ู…ุญุตูู",
+      value: r.model || "โ€”",
       icon: "ph:device-mobile-duotone",
     },
     {
-      label: "ำัํวแ ฯำสวๅ",
-      value: r.serial || "—",
+      label: "ุณุฑÛุงู ุฏุณุชฺฏุงู",
+      value: r.serial || "โ€”",
       icon: "ph:barcode-duotone",
       mono: true,
     },
     {
-      label: "ำัํวแ วัวไสํ",
-      value: r.warrantySerial || "—",
+      label: "ุณุฑÛุงู ฺฏุงุฑุงูุชÛ",
+      value: r.warrantySerial || "โ€”",
       icon: "ph:identification-badge-duotone",
       mono: true,
     },
     {
-      label: "ำัํวแ ัๅํัํ",
-      value: r.trackingSerial || "—",
+      label: "ุณุฑÛุงู ุฑูฺฏÛุฑÛ",
+      value: r.trackingSerial || "โ€”",
       icon: "ph:qrcode-duotone",
       mono: true,
     },
     {
-      label: "สวัํฮ ิัๆฺ",
+      label: "ุชุงุฑÛุฎ ุดุฑูุน",
       value: j(r.purchaseDate),
       icon: "ph:calendar-check-duotone",
     },
     {
-      label: "วํวไ วัวไสํ",
+      label: "ูพุงÛุงู ฺฏุงุฑุงูุชÛ",
       value: j(r.expireDate),
       icon: "ph:calendar-dots-duotone",
     },
@@ -577,16 +577,16 @@ const detailCards = computed(() => {
 
 // removed apiCards; using detailCards only
 
-/* วิไๅว */
+/* ุงฺฉุดูโ€ูุง */
 const printPage = () => window.print();
 const copyLink = async () => {
   const url = new URL(location.href);
   url.searchParams.set("track", normalizeSerial(form.serial));
   await navigator.clipboard.writeText(url.toString());
-  message.success("แํไ ํํัํ ํ ิฯ");
+  message.success("ูÛูฺฉ ูพÛฺฏÛุฑÛ ฺฉูพÛ ุดุฏ");
 };
 const enableSms = () => {
-  message.success("วฺแวไ ํวใํ ศัวํ วํไ ำัํวแ Ýฺวแ ิฯ (ฯใๆ)");
+  message.success("ุงุนูุงู ูพÛุงู…ฺฉÛ ุจุฑุงÛ ุงÛู ุณุฑÛุงู ูุนุงู ุดุฏ (ุฏู…ู)");
 };
 const resetForm = () => {
   form.serial = "";
@@ -597,7 +597,7 @@ const resetForm = () => {
   formRef.value?.restoreValidation?.();
 };
 
-/* Prefill วา ?track= */
+/* Prefill ุงุฒ ?track= */
 onMounted(() => {
   const t = new URLSearchParams(location.search).get("track");
   if (t) {
@@ -607,8 +607,10 @@ onMounted(() => {
 });
 
 usePageSeo({
-  title: "Warranty Check",
+  title: "ุงุณุชุนูุงู… ูุถุนÛุช ฺฏุงุฑุงูุชÛ",
 });
+
+</script>
 
 <style scoped>
 .ltr {

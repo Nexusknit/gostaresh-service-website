@@ -7,7 +7,7 @@
       dir="rtl"
     >
       <!--
-      <div class="hero-pano" role="img" aria-label="ศไั ฮฯใวส ำสัิ ำัๆํำ">
+      <div class="hero-pano" role="img" aria-label="ุจูุฑ ุฎุฏู…ุงุช ฺฏุณุชุฑุด ุณุฑูÛุณ">
         <div class="hero-pano-track">
           <div class="hero-pano-slide"></div>
           <div class="hero-pano-slide" aria-hidden="true"></div>
@@ -70,7 +70,7 @@
             type="button"
             class="absolute left-4 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/80 p-2 text-slate-700 transition hover:bg-white sm:flex"
             @click="prevHeroSlide"
-            aria-label="วำแวํฯ Þศแํ"
+            aria-label="ุงุณูุงÛุฏ ูุจูÛ"
           >
             <Icon name="ph:caret-left-duotone" size="20" />
           </button>
@@ -79,7 +79,7 @@
             type="button"
             class="absolute right-4 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/80 p-2 text-slate-700 transition hover:bg-white sm:flex"
             @click="nextHeroSlide"
-            aria-label="วำแวํฯ ศฺฯํ"
+            aria-label="ุงุณูุงÛุฏ ุจุนุฏÛ"
           >
             <Icon name="ph:caret-right-duotone" size="20" />
           </button>
@@ -94,7 +94,7 @@
               class="pointer-events-auto size-2 rounded-full transition sm:size-3"
               :class="index === currentHeroSlide ? 'bg-white' : 'bg-white/40'"
               @click="goToHeroSlide(index)"
-              :aria-label="`ัิ ศๅ วำแวํฯ ${index + 1}`"
+              :aria-label="`ูพุฑุด ุจู ุงุณูุงÛุฏ ${index + 1}`"
             ></button>
           </div>
         </div>
@@ -143,22 +143,22 @@
 
     <HomeServiceCenters />
 
-    <!-- ศัไฯๅว -->
+    <!-- ุจุฑูุฏูุง -->
     <section class="container mx-auto px-4 py-8">
       <div class="flex flex-col items-center gap-3 text-center">
         <div class="max-w-2xl">
           <h2 class="text-xl font-bold text-slate-800 text-center">
-            ศัไฯๅวํ สอส ๆิิ
+            ุจุฑูุฏูุงÛ ุชุญุช ูพูุดุด
           </h2>
           <p class="text-sm text-slate-500 text-center mx-auto">
-            ำสัิ ำัๆํำ ิัํ ัำใํ ฯๅๅว ศัไฯ ใุัอ ฯั ำัวำั ิๆั วำส.
+            ฺฏุณุชุฑุด ุณุฑูÛุณ ุดุฑÛฺฉ ุฑุณู…Û ุฏูโ€ูุง ุจุฑูุฏ ู…ุทุฑุญ ุฏุฑ ุณุฑุงุณุฑ ฺฉุดูุฑ ุงุณุช.
           </p>
         </div>
         <NuxtLink
           to="/warranty/policies"
           class="inline-flex items-center gap-1 text-sm font-medium text-sky-600 transition hover:text-sky-700 self-center"
         >
-          ใิวๅฯๅ ิัวํุ วใแ
+          ู…ุดุงูุฏู ุดุฑุงÛุท ฺฉุงู…ู
           <Icon name="ph:arrow-left-duotone" size="16" />
         </NuxtLink>
       </div>
@@ -169,25 +169,25 @@
 
     <HomeServiceShowcase :cards="showcaseCards" :image="showcaseHeroImage" />
 
-    <!-- สวํใแวํไ -->
+    <!-- ุชุงÛู…โ€ูุงÛู -->
     <section class="container mx-auto px-4 py-10">
       <div class="mb-6 flex flex-col gap-2 text-center">
         <h2 class="text-xl font-bold text-slate-800 text-center">
-          ใำํั ฮฯใวส ๆไๅ วำสฟ
+          ู…ุณÛุฑ ุฎุฏู…ุงุช ฺฺฏููู ุงุณุชุ
         </h2>
         <p class="text-sm text-slate-500">
-          วา หศส ฯัฮๆวำส สว สอๆํแ ฯำสวๅก ใัวอแ ฯÞํÞ ๆ ิÝวÝ ฯั ฯำสัำ ิใวำส.
+          ุงุฒ ุซุจุช ุฏุฑุฎูุงุณุช ุชุง ุชุญูÛู ุฏุณุชฺฏุงูุ ู…ุฑุงุญู ุฏูÛู ู ุดูุงู ุฏุฑ ุฏุณุชุฑุณ ุดู…ุงุณุช.
         </p>
       </div>
       <HomeTimeline />
     </section>
 
-    <!-- ใาํสๅว -->
+    <!-- ู…ุฒÛุชโ€ูุง -->
     <section class="container mx-auto px-4 py-10">
       <HomeFeatures />
     </section>
 
-    <!-- ยใๆาิ -->
+    <!-- ุขู…ูุฒุด -->
     <!-- Featured Products -->
     <HomeFeaturedProducts />
     <section class="bg-slate-50/70 py-10">
@@ -287,8 +287,8 @@ onBeforeUnmount(() => {
 });
 
 usePageSeo({
-  title: "ใฺัÝํ",
-  description: "ำสัิ ำัๆํำ — ำวใวไๅ? วำสฺแวใ ๆึฺํส ๆ ิัวํุ วัวไสํ ศัไฯๅว",
+  title: "ู…ุนุฑูÛ",
+  description: "ฺฏุณุชุฑุด ุณุฑูÛุณ โ€” ุณุงู…ุงููู” ุงุณุชุนูุงู… ูุถุนÛุช ู ุดุฑุงÛุท ฺฏุงุฑุงูุชÛ ุจุฑูุฏูุง",
   image: "/images/banners/banner.jpg",
 });
 
@@ -296,55 +296,55 @@ const blogData = await fetchPublicContentSafe<BlogPost[]>("blogs", []);
 
 const actionCards: ActionCard[] = [
   {
-    title: "วำสฺแวใ Ýๆัํ วัวไสํ",
+    title: "ุงุณุชุนูุงู… ููุฑÛ ฺฏุงุฑุงูุชÛ",
     description:
-      "ิใวัๅ ำัํวแ ฯำสวๅ ัว หศส ไํฯ ๆ ไสํฬๅ วำสฺแวใ ัว ฯั แอูๅ ใิวๅฯๅ ไํฯ.",
+      "ุดู…ุงุฑู ุณุฑÛุงู ุฏุณุชฺฏุงู ุฑุง ุซุจุช ฺฉูÛุฏ ู ูุชÛุฌู ุงุณุชุนูุงู… ุฑุง ุฏุฑ ูุญุธู ู…ุดุงูุฏู ฺฉูÛุฏ.",
     to: "/warranty/check",
     icon: "ph:magnifying-glass-duotone",
-    buttonLabel: "ิัๆฺ วำสฺแวใ",
+    buttonLabel: "ุดุฑูุน ุงุณุชุนูุงู…",
   },
   {
-    title: "ิัวํุ ศัไฯๅว",
+    title: "ุดุฑุงÛุท ุจุฑูุฏูุง",
     description:
-      "ใฯส ๆ ิัวํุ วัวไสํ ๅั ศัไฯ ัว ศๅ สÝํ ฯำสๅศไฯํ ๆ ใอีๆแวส ศััำํ ไํฯ.",
+      "ู…ุฏุช ู ุดุฑุงÛุท ฺฏุงุฑุงูุชÛ ูุฑ ุจุฑูุฏ ุฑุง ุจู ุชูฺฉÛฺฉ ุฏุณุชูโ€ุจูุฏÛ ู ู…ุญุตููุงุช ุจุฑุฑุณÛ ฺฉูÛุฏ.",
     to: "/warranty/policies",
     icon: "ph:clipboard-text-duotone",
-    buttonLabel: "ใิวๅฯๅ ิัวํุ",
+    buttonLabel: "ู…ุดุงูุฏู ุดุฑุงÛุท",
   },
   {
-    title: "ยใๆาิ ๆ ศแว",
+    title: "ุขู…ูุฒุด ู ุจูุงฺฏ",
     description:
-      "ไวส วัศัฯํ ศัวํ วัำวแ ฯำสวๅก ไๅฯวัํ ศๅสั ๆ สวาๅสัํไ วฮศวั ฮฯใวส ัว ศฮๆวไํฯ.",
+      "ูฺฉุงุช ฺฉุงุฑุจุฑุฏÛ ุจุฑุงÛ ุงุฑุณุงู ุฏุณุชฺฏุงูุ ูฺฏูุฏุงุฑÛ ุจูุชุฑ ู ุชุงุฒูโ€ุชุฑÛู ุงุฎุจุงุฑ ุฎุฏู…ุงุช ุฑุง ุจุฎูุงูÛุฏ.",
     to: "/education",
     icon: "ph:book-open-duotone",
-    buttonLabel: "ใุวแฺๅ ใุวแศ",
+    buttonLabel: "ู…ุทุงูุนู ู…ุทุงูุจ",
   },
 ];
 
 const showcaseCards = [
   {
-    title: "ํิฮๆวไ ไใวํไฯํ",
+    title: "ูพÛุดุฎูุงู ูู…ุงÛูุฏฺฏÛ",
     description:
-      "ฯัํวÝส สํสๅวํ ฬฯํฯก ใฯํัํส Þฺุวส ๆ ใิวๅฯๅ ๆึฺํส ๅั ำÝวัิ ฯั ํ ฯวิศๆัฯ ใสใัา.",
+      "ุฏุฑÛุงูุช ุชÛฺฉุชโ€ูุงÛ ุฌุฏÛุฏุ ู…ุฏÛุฑÛุช ูุทุนุงุช ู ู…ุดุงูุฏู ูุถุนÛุช ูุฑ ุณูุงุฑุด ุฏุฑ Ûฺฉ ุฏุงุดุจูุฑุฏ ู…ุชู…ุฑฺฉุฒ.",
     link: "/representatives/dashboard",
-    linkLabel: "ๆัๆฯ ศๅ ไแ",
+    linkLabel: "ูุฑูุฏ ุจู ูพูู",
     icon: "ph:layout-duotone",
-    tag: "ๆํๅ ไใวํไฯวไ",
+    tag: "ูÛฺู ูู…ุงÛูุฏฺฏุงู",
   },
   {
-    title: "วสๆใวำํๆไ สฺใํัวๅ",
+    title: "ุงุชูู…ุงุณÛูู ุชุนู…Ûุฑฺฏุงู",
     description:
-      "หศส Ýัยํไฯ ะํัิ สว ใัฬๆฺํ ฯำสวๅ ศว Ýัใๅวํ ๅๆิใไฯ ๆ วุแวฺัำวไํ ฮๆฯวั ศๅ ใิสัํ.",
+      "ุซุจุช ูุฑุขÛูุฏ ูพุฐÛุฑุด ุชุง ู…ุฑุฌูุนÛ ุฏุณุชฺฏุงู ุจุง ูุฑู…โ€ูุงÛ ููุดู…ูุฏ ู ุงุทูุงุนโ€ุฑุณุงูÛ ุฎูุฏฺฉุงุฑ ุจู ู…ุดุชุฑÛ.",
     link: "/solutions/automation",
-    linkLabel: "ฬาฦํวส ัวๅวั",
+    linkLabel: "ุฌุฒุฆÛุงุช ุฑุงูฺฉุงุฑ",
     icon: "ph:gear-six-duotone",
   },
   {
-    title: "าวัิๅวํ สอแํแํ",
+    title: "ฺฏุฒุงุฑุดโ€ูุงÛ ุชุญูÛูÛ",
     description:
-      "ัๆไฯ ฮัวศํ ใอีๆแวสก Þฺุวส ัสัวั ๆ ฺใแัฯ สํใๅวํ ฮฯใวส ัว ศว ไใๆฯวัๅวํ ฯวํไวใํ ศศํไํฯ.",
+      "ุฑููุฏ ุฎุฑุงุจÛ ู…ุญุตููุงุชุ ูุทุนุงุช ูพุฑุชฺฉุฑุงุฑ ู ุนู…ูฺฉุฑุฏ ุชÛู…โ€ูุงÛ ุฎุฏู…ุงุช ุฑุง ุจุง ูู…ูุฏุงุฑูุงÛ ุฏุงÛูุงู…Ûฺฉ ุจุจÛูÛุฏ.",
     link: "/insights/reports",
-    linkLabel: "ใิวๅฯๅ าวัิๅว",
+    linkLabel: "ู…ุดุงูุฏู ฺฏุฒุงุฑุดโ€ูุง",
     icon: "ph:trend-up-duotone",
   },
 ];

@@ -193,9 +193,9 @@ type Policy = {
   id: string;
   brand: string;
   category: string;
-  product?: string;
-  duration: { value: number; unit: "month" | "day" };
-  conditions?: string;
+  product?: string | null;
+  duration: { value: number; unit: "month" | "day" | null };
+  conditions?: string | null;
 };
 
 const raw = await fetchPublicContentSafe<Policy[]>("policies", []);
@@ -296,7 +296,8 @@ const hasFilters = computed(
   () => Boolean(brand.value || category.value || q.value.trim())
 );
 
-const formatDuration = (duration: Policy["duration"]) => {
+const formatDuration = (duration?: Policy["duration"] | null) => {
+  if (!duration || !duration.value) return "نامشخص";
   const unit = duration.unit === "day" ? "روز" : "ماه";
   return `${toFa(duration.value)} ${unit}`;
 };
@@ -367,7 +368,7 @@ watch(filteredRows, (items) => {
 });
 
 usePageSeo({
-  title: "Warranty Policies",
+  title: "شرایط گارانتی برندها",
 });
 </script>
 

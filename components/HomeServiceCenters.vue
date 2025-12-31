@@ -2,12 +2,12 @@
   <section class="container mx-auto px-4 py-12" dir="rtl">
     <div class="flex flex-col items-center gap-4 text-center">
       <h2 class="text-2xl font-bold text-slate-800">
-        مراکز خدمات سازگار در سراسر کشور
+        مراکز خدمات گسترش سرویس در سراسر کشور
       </h2>
       <p class="max-w-2xl text-sm text-slate-500">
         شبکه نمایندگی‌های ما در شهرهای مختلف آماده ارائه خدمات پس از فروش، تعمیر
         تخصصی و پشتیبانی حضوری است. نزدیک‌ترین مرکز به خود را پیدا کنید و از
-        خدمات ممتاز سازگار بهره ببرید.
+        خدمات ممتاز گسترش سرویس بهره ببرید.
       </p>
     </div>
 

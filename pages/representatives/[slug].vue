@@ -3,17 +3,17 @@
     <section class="rounded-3xl bg-sky-600 px-6 py-10 text-white shadow-lg">
       <div class="flex flex-col gap-4">
         <nav class="text-xs text-white/70">
-          <NuxtLink to="/" class="hover:text-white">ฮวไๅ</NuxtLink>
+          <NuxtLink to="/" class="hover:text-white">ุฎุงูู</NuxtLink>
           <span class="mx-2">/</span>
           <NuxtLink to="/representatives" class="hover:text-white"
-            >ไใวํไฯํๅว</NuxtLink
+            >ูู…ุงÛูุฏฺฏÛโ€ูุง</NuxtLink
           >
           <span class="mx-2">/</span>
           <span>{{ center.title }}</span>
         </nav>
         <div class="space-y-3">
           <h1 class="text-2xl font-bold md:text-3xl">
-            วุแวฺวส ฯÝสั {{ center.title }} วัวไสํ ำสัิ ำัๆํำ
+            ุงุทูุงุนุงุช ุฏูุชุฑ {{ center.title }} ฺฏุงุฑุงูุชÛ ฺฏุณุชุฑุด ุณุฑูÛุณ
           </h1>
           <p class="max-w-3xl text-sm leading-7 text-white/85">
             {{ center.summary }}
@@ -66,7 +66,7 @@
       <div class="space-y-6">
         <div class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
           <h2 class="mb-5 text-lg font-semibold text-slate-800">
-            ิฺศๅ {{ center.title }}
+            ุดุนุจู {{ center.title }}
           </h2>
           <ul class="space-y-4 text-sm text-slate-600">
             <li class="flex items-start gap-3">
@@ -76,7 +76,7 @@
                 <Icon name="ph:map-pin-duotone" size="22" />
               </span>
               <div class="space-y-1">
-                <span class="font-semibold text-slate-700">ยฯัำ</span>
+                <span class="font-semibold text-slate-700">ุขุฏุฑุณ</span>
                 <p class="leading-6">{{ center.contact.address }}</p>
               </div>
             </li>
@@ -87,7 +87,7 @@
                 <Icon name="ph:clock-duotone" size="22" />
               </span>
               <div class="space-y-1">
-                <span class="font-semibold text-slate-700">ำวฺส วัํ</span>
+                <span class="font-semibold text-slate-700">ุณุงุนุช ฺฉุงุฑÛ</span>
                 <ul class="space-y-1">
                   <li v-for="(row, index) in center.contact.hours" :key="index">
                     {{ row }}
@@ -102,7 +102,7 @@
                 <Icon name="ph:phone-duotone" size="22" />
               </span>
               <div class="space-y-1">
-                <span class="font-semibold text-slate-700">ิใวัๅ สใวำ</span>
+                <span class="font-semibold text-slate-700">ุดู…ุงุฑู ุชู…ุงุณ</span>
                 <ul class="space-y-1">
                   <li v-for="phone in center.contact.phones" :key="phone">
                     <a
@@ -121,7 +121,7 @@
                 <Icon name="ph:envelope-simple-duotone" size="22" />
               </span>
               <div class="space-y-1">
-                <span class="font-semibold text-slate-700">วํใํแ ิสํศวไํ</span>
+                <span class="font-semibold text-slate-700">ุงÛู…Ûู ูพุดุชÛุจุงูÛ</span>
                 <a
                   :href="`mailto:${center.contact.email}`"
                   class="line-clamp-3 text-sky-600 transition hover:text-sky-700"
@@ -137,7 +137,7 @@
               rel="noopener"
               class="inline-flex items-center gap-2 rounded-full bg-sky-600 px-5 py-2 text-white transition hover:bg-sky-700"
             >
-              ใิวๅฯๅ ฯั ไÞิๅ
+              ู…ุดุงูุฏู ุฏุฑ ููุดู
               <Icon name="ph:arrow-up-right" size="18" />
             </a>
           </div>
@@ -145,7 +145,7 @@
 
         <div class="rounded-3xl bg-slate-50 p-6 ring-1 ring-slate-200">
           <h2 class="mb-4 text-lg font-semibold text-slate-800">
-            ฮฯใวส ๆํๅ วํไ ิฺศๅ
+            ุฎุฏู…ุงุช ูÛฺู ุงÛู ุดุนุจู
           </h2>
           <ul class="grid gap-3 text-sm text-slate-600 sm:grid-cols-2">
             <li
@@ -182,7 +182,7 @@ const center = (await findServiceCenter(slug.value)) as
 if (!center) {
   throw createError({
     statusCode: 404,
-    statusMessage: "วํไ ไใวํไฯํ ํฯว ไิฯ",
+    statusMessage: "ุงÛู ูู…ุงÛูุฏฺฏÛ ูพÛุฏุง ูุดุฏ",
   });
 }
 

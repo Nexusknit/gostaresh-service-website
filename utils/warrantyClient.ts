@@ -16,7 +16,7 @@ export type WarrantyRecord = {
 };
 
 const toEn = (s: string) =>
-  s.replace(/[??-??]/g, (d) => "0123456789"["?????�??????????????".indexOf(d)]);
+  s.replace(/[۰-۹]/g, (d) => "0123456789"["۰۱۲۳۴۵۶۷۸۹".indexOf(d)]);
 const normSerial = (v: string) =>
   toEn(v)
     .replace(/[^A-Za-z0-9-]/g, "")
@@ -79,12 +79,11 @@ export async function findWarrantyBySerial(
         expireDate: r.endDate,
         warranty: { value: r.duration ?? 0, unit: "month" },
         companyService: r.warrantySerialName || "",
-        serviceCenter: r.warrantyName || "",
-        status: {
+        serviceCenter: r.warrantyName || "",        status: {
           current: "registered",
           history: [
             r.startDate
-              ? { key: "registered", at: r.startDate, note: "�?�?�?�? �?�?�?�?????�?" }
+              ? { key: "registered", at: r.startDate, note: "ثبت در سامانه گارانتی" }
               : undefined,
           ].filter(Boolean) as { key: string; at: string; note?: string }[],
         },

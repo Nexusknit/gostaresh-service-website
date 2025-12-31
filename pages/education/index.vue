@@ -2,11 +2,11 @@
   <div class="container mx-auto px-4 py-10" dir="rtl">
     <header class="mb-10 text-center">
       <h1 class="text-3xl font-extrabold text-slate-800 mb-3">
-        ยใๆาิ ๆ ศแว
+        ุขู…ูุฒุด ู ุจูุงฺฏ
       </h1>
-      <p class="mx-auto max-w-2xl text-slate-600">
-        สวาๅสัํไ ไวส ๆ ยใๆาิๅวํ ำสัิ ำัๆํำ ศัวํ ไๅฯวัํ ศๅสั ใอีๆแวส ๆ
-        วำสÝวฯๅ? ๅๆิใไฯวไๅ วา ฮฯใวส ำ วา Ýัๆิ.
+            <p class="mx-auto max-w-2xl text-slate-600">
+        ุชุงุฒูโ€ุชุฑÛู ูฺฉุงุช ู ุขู…ูุฒุดโ€ูุงÛ ฺฏุณุชุฑุด ุณุฑูÛุณ ุจุฑุงÛ ูฺฏูุฏุงุฑÛ ุจูุชุฑ ู…ุญุตููุงุช ู
+        ุงุณุชูุงุฏูู” ููุดู…ูุฏุงูู ุงุฒ ุฎุฏู…ุงุช ูพุณ ุงุฒ ูุฑูุด.
       </p>
     </header>
 
@@ -31,7 +31,7 @@
               <span class="rounded-full bg-slate-100 px-3 py-1">
                 {{ formatDate(post.date) }}
               </span>
-              <span>{{ post.readMinutes }} ฯÞํÞๅ ใุวแฺๅ</span>
+              <span>{{ post.readMinutes }} ุฏูÛูู ู…ุทุงูุนู</span>
             </div>
 
             <h2 class="text-xl font-semibold text-slate-800 leading-tight">
@@ -63,8 +63,8 @@ import type { BlogPost } from "@/types/blog";
 import { fetchPublicContentSafe } from "@/utils/publicContent";
 
 usePageSeo({
-  title: "ยใๆาิ ๆ ศแว",
-  description: "ใฬใๆฺๅ ใÞวแวส ๆ ไวส ยใๆาิํ ำสัิ ำัๆํำ ศัวํ วัศัวไ ฮฯใวส ำ วา Ýัๆิ",
+  title: "ุขู…ูุฒุด ู ุจูุงฺฏ",
+  description: "ู…ุฌู…ูุนู ู…ูุงูุงุช ู ูฺฉุงุช ุขู…ูุฒุดÛ ฺฏุณุชุฑุด ุณุฑูÛุณ ุจุฑุงÛ ฺฉุงุฑุจุฑุงู ุฎุฏู…ุงุช ูพุณ ุงุฒ ูุฑูุด",
   image: "/images/banners/banner.jpg",
 });
 

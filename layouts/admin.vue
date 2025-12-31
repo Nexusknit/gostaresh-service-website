@@ -38,6 +38,9 @@
               <NuxtLink v-if="hasPerm('service_center.read')" to="/admin/service-centers" class="nav-item" :class="route.path.startsWith('/admin/service-centers') ? 'is-active' : ''">
                 <Icon name="ph:buildings-duotone" /> Service Centers
               </NuxtLink>
+              <NuxtLink v-if="hasPerm('policy.read')" to="/admin/policies" class="nav-item" :class="route.path.startsWith('/admin/policies') ? 'is-active' : ''">
+                <Icon name="ph:clipboard-text-duotone" /> Policies
+              </NuxtLink>
               <NuxtLink v-if="hasPerm('article.read')" to="/admin/articles" class="nav-item" :class="route.path.startsWith('/admin/articles') ? 'is-active' : ''">
                 <Icon name="ph:newspaper-duotone" /> مقالات
               </NuxtLink>

@@ -5,13 +5,27 @@
       dir="rtl"
     >
       <div class="flex flex-wrap items-center gap-3">
-        <NuxtLink to="/about" class="hover:text-sky-600 transition">درباره ما</NuxtLink>
-        <NuxtLink to="/representatives" class="hover:text-sky-600 transition">نمایندگی‌ها</NuxtLink>
-        <NuxtLink to="/education" class="hover:text-sky-600 transition">آموزش</NuxtLink>
+        <NuxtLink to="/about" class="hover:text-sky-600 transition"
+          >درباره ما</NuxtLink
+        >
+        <NuxtLink to="/representatives" class="hover:text-sky-600 transition"
+          >نمایندگی‌ها</NuxtLink
+        >
+        <NuxtLink to="/education" class="hover:text-sky-600 transition"
+          >آموزش</NuxtLink
+        >
       </div>
       <div class="flex flex-col gap-1 text-xs text-slate-500 md:text-right">
-        <span>سایت گسترش سرویس: gsiran.ir</span>
-        <span>سامانه خدمات پس از فروش: service.gsiran.ir</span>
+        <span>
+          سایت گسترش سرویس:
+          <NuxtLink
+            to="https://GostareshService.com"
+            class="hover:text-sky-600 transition"
+          >
+            GostareshService.com
+          </NuxtLink></span
+        >
+        <!-- <span>سامانه خدمات پس از فروش: service.gsiran.ir</span> -->
       </div>
     </div>
   </footer>
