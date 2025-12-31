@@ -224,10 +224,7 @@ type HeroSlide = {
   image: string;
 };
 
-const heroSlides = await fetchPublicContentSafe<HeroSlide[]>(
-  "hero-slides",
-  []
-);
+const heroSlides = await fetchPublicContentSafe<HeroSlide[]>("hero-slides", []);
 
 const HERO_SLIDE_DURATION = 6000;
 const currentHeroSlide = ref(0);
@@ -287,7 +284,7 @@ onBeforeUnmount(() => {
 });
 
 usePageSeo({
-  title: "معرفی",
+  title: "گسترش سرویس",
   description: "گسترش سرویس — سامانهٔ استعلام وضعیت و شرایط گارانتی برندها",
   image: "/images/banners/banner.jpg",
 });
@@ -431,4 +428,3 @@ const hotBlogs = computed(() =>
   object-fit: contain;
 }
 </style>
-
