@@ -1,16 +1,8 @@
+import "dotenv/config";
+
 import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { createServer } from "node:http";
-
-const shouldLoadDotenv =
-  process.env.NODE_ENV !== "production" && existsSync(".env");
-if (shouldLoadDotenv) {
-  try {
-    await import("dotenv/config");
-  } catch (error) {
-    console.warn("[server] dotenv not available; skipping .env load.");
-  }
-}
 
 const serverEntryUrl = new URL("./.output/server/index.mjs", import.meta.url);
 const serverEntryPath = fileURLToPath(serverEntryUrl);
