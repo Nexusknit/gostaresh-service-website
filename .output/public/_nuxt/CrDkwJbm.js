@@ -1,1 +1,0 @@
-const a=[{id:"years",label:"سال سابقه",value:12,suffix:"+"},{id:"checks",label:"استعلام انجام‌شده",value:25e4,suffix:"+"},{id:"brands",label:"برند تحت پوشش",value:35,suffix:"+"},{id:"avgDays",label:"میانگین روز رسیدگی",value:3}];export{a as default};

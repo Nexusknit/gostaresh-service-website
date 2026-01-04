@@ -1,1 +1,0 @@
-import{co as a,as as i}from"./vp8MPyNN.js";import{u as n}from"./mYRyJGGe.js";const u=a(t=>{if(t.path==="/admin/login"||!t.path.startsWith("/admin"))return;const{isLoggedIn:e}=n();if(!e.value)return i(`/admin/login?redirect=${encodeURIComponent(t.fullPath)}`)});export{u as default};

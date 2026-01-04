@@ -1,2 +1,0 @@
-let e=null;async function loadCategories(){if(e)return e;const t=(await import("./categories-DNTu7mVP.mjs")).default;return e=t,t}async function getParentCategories(){return(await loadCategories()).parents.slice()}async function getChildCategories(e){return(await loadCategories()).children.filter(t=>t.parentSlug===e)}export{getChildCategories as a,getParentCategories as g};
-//# sourceMappingURL=categories-S8FZ7-Rl.mjs.map

@@ -4,6 +4,11 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      clean:
+        description: "Clean server dir before upload (slow)."
+        required: false
+        default: "false"
 
 jobs:
   deploy:
@@ -21,15 +26,12 @@ jobs:
         run: |
           npm ci
           npm run build
-
-      # یک فولدر deploy بسازیم که فقط چیزهای لازم آپلود شود
       - name: Prepare deploy bundle
         run: |
           rm -rf deploy
           mkdir -p deploy/tmp
           cp -r .output deploy/.output
-          cp app.js deploy/app.js
-          # این فایل باعث ریستارت Passenger می‌شود (با تغییر timestamp)
+          cp server.mjs deploy/server.mjs
           date > deploy/tmp/restart.txt
 
       - name: Upload via FTPS
@@ -42,8 +44,7 @@ jobs:
           protocol: ftps
           local-dir: deploy/
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          # برای اینکه فایل state مزاحم نشود
-          # dangerous-clean-slate: true
+          dangerous-clean-slate: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.clean == 'true' }}
           exclude: |
             **/.git*
             **/.git*/**
