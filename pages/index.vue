@@ -139,7 +139,7 @@
       </div>
     </section>
 
-    <StatsStrip />
+    <!-- <StatsStrip /> -->
 
     <HomeServiceCenters />
 
