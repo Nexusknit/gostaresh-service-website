@@ -220,12 +220,12 @@
             <div
               class="mb-2 flex items-center justify-between text-sm text-slate-600"
             >
-              <span>پیشرفت مصرف گارانتی</span>
-              <span class="font-medium">{{ toFa(progressPct) }}%</span>
+              <span>مانده گارانتی</span>
+              <span class="font-medium">{{ toFa(100 - progressPct) }}%</span>
             </div>
             <n-progress
               type="line"
-              :percentage="progressPct"
+              :percentage="100 - progressPct"
               :height="10"
               :color="statusVisual.progress"
               :indicator-text-color="statusVisual.progress"
@@ -253,7 +253,7 @@
           >
             <div class="flex items-center gap-2">
               <Icon name="ph:map-pin-duotone" class="text-lg text-slate-400" />
-              <span>مرکز خدمات: {{ result.serviceCenter }}</span>
+              <span>شرکت بازرگانی: {{ result.companyService }}</span>
             </div>
             <div class="flex items-center gap-2 text-xs text-slate-400">
               <Icon
@@ -362,6 +362,7 @@ type PageResult = {
   brand: string;
   model: string;
   warrantySerial?: string;
+  companyService?: string;
   trackingSerial?: string;
   durationMonths?: number;
   purchaseDate: Date;
@@ -465,6 +466,7 @@ const submit = async () => {
       brand: rec.brand,
       model: rec.model,
       warrantySerial: rec.serials?.[1] || "",
+      companyService: rec.companyService || "",
       trackingSerial: rec.serials?.[2] || "",
       durationMonths:
         rec.warranty?.unit === "month" ? rec.warranty.value : undefined,
@@ -609,7 +611,6 @@ onMounted(() => {
 usePageSeo({
   title: "استعلام وضعیت گارانتی",
 });
-
 </script>
 
 <style scoped>
