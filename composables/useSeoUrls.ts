@@ -1,14 +1,34 @@
 import { computed } from "vue";
 
+const firstHeaderValue = (value?: string) => {
+  if (!value) return "";
+  return value.split(",")[0].trim();
+};
+
 export function useSeoUrls() {
   const route = useRoute();
   const config = useRuntimeConfig();
   const requestUrl = process.server ? useRequestURL() : null;
+  const requestHeaders = process.server ? useRequestHeaders() : null;
 
   const origin = computed(() => {
     const siteUrl = (config.public as any)?.siteUrl;
     if (siteUrl) {
       return String(siteUrl).replace(/\/$/, "");
+    }
+    if (process.server && requestHeaders) {
+      const host = firstHeaderValue(
+        requestHeaders["x-forwarded-host"] || requestHeaders["host"]
+      );
+      if (host) {
+        const proto = firstHeaderValue(
+          requestHeaders["x-forwarded-proto"] ||
+            requestHeaders["x-forwarded-protocol"] ||
+            requestHeaders["x-forwarded-scheme"]
+        );
+        const scheme = proto || requestUrl?.protocol.replace(":", "") || "https";
+        return `${scheme}://${host}`;
+      }
     }
     if (process.server && requestUrl) {
       return requestUrl.origin;

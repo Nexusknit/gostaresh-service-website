@@ -1,4 +1,5 @@
-import { defineEventHandler, getRequestURL, setHeader } from "h3";
+import { defineEventHandler, getRequestHeaders, getRequestURL, setHeader } from "h3";
+import type { H3Event } from "h3";
 import { useRuntimeConfig } from "#imports";
 
 type UrlEntry = {
@@ -24,6 +25,26 @@ function toLastMod(value?: string | null) {
   return date.toISOString();
 }
 
+function firstHeaderValue(value?: string) {
+  if (!value) return "";
+  return value.split(",")[0].trim();
+}
+
+function resolveRequestOrigin(event: H3Event) {
+  const headers = getRequestHeaders(event);
+  const host = firstHeaderValue(headers["x-forwarded-host"] || headers["host"]);
+  const proto = firstHeaderValue(
+    headers["x-forwarded-proto"] ||
+      headers["x-forwarded-protocol"] ||
+      headers["x-forwarded-scheme"]
+  );
+  if (host) {
+    const scheme = proto || getRequestURL(event).protocol.replace(":", "");
+    return `${scheme}://${host}`;
+  }
+  return getRequestURL(event).origin;
+}
+
 function resolvePublicBase(config: { public?: Record<string, unknown> }, siteOrigin: string) {
   const apiOrigin = (config.public as any)?.apiOrigin;
   const apiBase = (config.public as any)?.apiBase || "";
@@ -39,7 +60,7 @@ function resolvePublicBase(config: { public?: Record<string, unknown> }, siteOri
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
   const siteOrigin =
-    String((config.public as any)?.siteUrl || getRequestURL(event).origin).replace(
+    String((config.public as any)?.siteUrl || resolveRequestOrigin(event)).replace(
       /\/$/,
       ""
     );
